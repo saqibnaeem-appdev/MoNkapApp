@@ -34,92 +34,82 @@ const LoginScreen = ({ navigation }) => {
   return (
     <SafeAreaView>
       <HeaderCom text={"Login"} onPressLeft={() => navigation.goBack()} />
-
-      <ScrollView>
+      <View
+        style={{
+          flexDirection: "row",
+          // justifyContent: "space-between",
+          top: hp("7%"),
+          marginBottom: hp("1.7%"),
+          // width: wp("100%"),
+          alignSelf: "center",
+          width: wp("50%"),
+          backgroundColor: "red",
+        }}
+      >
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "center",
-
+            backgroundColor: "green",
             alignSelf: "center",
-            width: wp("50%"),
-
-            marginTop: hp("20%"),
+            width: wp("25%"),
           }}
         >
-          <View
-            style={{
-              alignSelf: "center",
-              width: wp("25%"),
-            }}
-          >
-            <TouchableOpacity onPress={handlePhone}>
-              <Text
-                style={
-                  isActive && Phone
-                    ? styles.activeButton
-                    : styles.inactiveButton
-                }
-              >
-                Phone
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              alignSelf: "center",
-              width: wp("25%"),
-            }}
-          >
-            <TouchableOpacity onPress={handleEmail}>
-              <Text
-                style={
-                  isActive && email
-                    ? styles.activeButton
-                    : styles.inactiveButton
-                }
-              >
-                Email
-              </Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress={handlePhone}>
+            <Text
+              style={
+                isActive && Phone ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              Phone
+            </Text>
+          </TouchableOpacity>
         </View>
-        {Phone == true ? (
-          <>
-            <View style={styles.textInputViewStyle}>
-              <View style={styles.CountryPhonePickerView}>
-                <CountryPhonePicker />
-              </View>
-
-              <TextInputCom
-                text={"Enter Your Pincode"}
-                placeholder={"Enter pincode"}
-              />
-            </View>
-
-            <View style={styles.ButtonViewStyle}>
-              <ButtonCom />
-            </View>
-          </>
-        ) : (
-          <>
-            <View style={styles.textInputViewStyle}>
-              <TextInputCom
-                text={"Enter Your e-mail"}
-                placeholder={"Enter email"}
-              />
-              <TextInputCom
-                text={"Enter Your Password"}
-                placeholder={"Enter password"}
-              />
-            </View>
-            <View style={styles.ButtonViewStyle}>
-              <ButtonCom />
-            </View>
-          </>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+        <View
+          style={{
+            backgroundColor: "yellow",
+            alignSelf: "center",
+            width: wp("25%"),
+          }}
+        >
+          <TouchableOpacity onPress={handleEmail}>
+            <Text
+              style={
+                isActive && email ? styles.activeButton : styles.inactiveButton
+              }
+            >
+              Email
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      {Phone == true ? (
+        <>
+          <View style={styles.textInputViewStyle}>
+            <CountryPhonePicker />
+            <TextInputCom
+              text={"Enter Your Pincode"}
+              placeholder={"Enter pincode"}
+            />
+          </View>
+          <View style={styles.ButtonViewStyle}>
+            <ButtonCom />
+          </View>
+        </>
+      ) : (
+        <>
+          <View style={styles.textInputViewStyle}>
+            <TextInputCom
+              text={"Enter Your e-mail"}
+              placeholder={"Enter email"}
+            />
+            <TextInputCom
+              text={"Enter Your Password"}
+              placeholder={"Enter password"}
+            />
+          </View>
+          <View style={styles.ButtonViewStyle}>{/* <ButtonCom /> */}</View>
+        </>
+      )}
+    </View>
   );
 };
 
