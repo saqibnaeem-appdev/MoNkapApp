@@ -83,7 +83,7 @@ const LoginScreen = ({ navigation }) => {
             />
           </View>
           <View style={styles.ButtonViewStyle}>
-            <ButtonCom />
+            <ButtonCom onPress={()=>navigation.navigate('BottomTabScreen')}  />
           </View>
         </>
       ) : (
