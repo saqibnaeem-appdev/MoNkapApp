@@ -6,9 +6,9 @@ import {
 } from "react-native-responsive-screen";
 import Colors from "../../assets/theme/Colors";
 
-const MyImage = ({ text, url }) => {
+const MyImage = ({ text, url,onPress }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View>
         <View
           style={{

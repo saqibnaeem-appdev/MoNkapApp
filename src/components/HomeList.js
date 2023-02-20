@@ -27,7 +27,7 @@ import {
 import Colors from "../../assets/theme/Colors";
 import DividerCompo from "./DividerCompo";
 
-const HomeList = ({url,text}) => {
+const HomeList = ({url,text,onPress}) => {
   return (
     <View style={styles.HomeListParent}>
       <View style={styles.HomeListChild}>
@@ -38,7 +38,7 @@ const HomeList = ({url,text}) => {
           />
           <Text style={styles.HomeListText}>{text}</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress}>
           <AntDesign name="right" size={20} color={'white'} />
         </TouchableOpacity>
       </View>

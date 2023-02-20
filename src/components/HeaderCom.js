@@ -13,8 +13,8 @@ import useCustomFonts from "../../assets/fonts/useCustomFonts";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../assets/theme/Colors";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
-const HeaderCom = ({ text, onPressRight, onPressLeft }) => {
-  const navigation = useNavigation();
+const HeaderCom = ({ text, onPressRight, onPressLeft ,onPress}) => {
+  // const navigation = useNavigation();
 
   return (
     <SafeAreaView>
@@ -24,7 +24,7 @@ const HeaderCom = ({ text, onPressRight, onPressLeft }) => {
             name="keyboard-backspace"
             size={40}
             color={Colors.white}
-            onPress={onPressLeft}
+            onPress={onPress}
           />
           <Text style={styles.textStyle}>{text}</Text>
           <AntDesign

@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import AuthStack from "./AuthStack";
 import BottomTabScreen from "./BottomTab";
+import TransferMoney from "../screens/TransferMoney";
 
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
@@ -22,6 +23,13 @@ const MainStack = ({ navigation }) => {
           headerShown: false,
         }}
         component={BottomTabScreen}
+      />
+      <Stack.Screen
+        name="TransferMoney"
+        options={{
+          headerShown: false,
+        }}
+        component={TransferMoney}
       />
     </Stack.Navigator>
   );
