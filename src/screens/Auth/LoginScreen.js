@@ -1,6 +1,14 @@
 /** @format */
 
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 import React, { useState } from "react";
 import HeaderCom from "../../components/HeaderCom";
 import TextInputCom from "../../components/TextInputCom";
@@ -24,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
     setEmail(true);
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
       <HeaderCom text={"Login"} onPressLeft={() => navigation.goBack()} />
       <View
         style={{
@@ -83,7 +91,7 @@ const LoginScreen = ({ navigation }) => {
             />
           </View>
           <View style={styles.ButtonViewStyle}>
-            <ButtonCom onPress={()=>navigation.navigate('BottomTabScreen')}  />
+            <ButtonCom />
           </View>
         </>
       ) : (
@@ -109,21 +117,17 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    // backgroundColor: "red",
   },
   textInputViewStyle: {
     alignSelf: "center",
-    justifyContent: "space-between",
-    marginTop: hp("20%"),
-    flex: 1,
     padding: 10,
-    height: hp("10%"),
+    height: hp("40%"),
   },
   ButtonViewStyle: {
     alignSelf: "center",
-    justifyContent: "flex-end",
-    flex: 1,
-    marginBottom: hp("3%"),
+    marginTop: "10%",
   },
   inactiveButton: {
     // color: Colors.lightText,
@@ -146,5 +150,10 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     width: wp("12%"),
     marginTop: hp("2%"),
+  },
+  CountryPhonePickerView: {
+    width: "100%",
+    height: "30%",
+    marginTop: "5%",
   },
 });
