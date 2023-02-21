@@ -3,7 +3,8 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
 import Colors from "../../assets/theme/Colors";
-
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -22,7 +23,17 @@ const textInput = ({
   secureTextEntry,
   editable,
   selectTextOnFocus,
+  borderColor,
+  belowText,
 }) => {
+  let [fontsLoaded] = useFonts({
+    "Gentium-Basic-italic": require("../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={styles.container}>
       <View style={styles.secondView}>
@@ -44,12 +55,14 @@ const textInput = ({
             },
             { borderWidth: borderWidth ? borderWidth : null },
             { borderRadius: borderRadius ? borderRadius : 5 },
+            { borderColor: borderColor ? borderColor : null },
           ]}
           value={value}
           onChangeText={onChangeText}
           textAlignVertical={textAlignVertical}
         />
       </View>
+      <Text style={styles.belowTextStyle}>{belowText}</Text>
     </View>
   );
 };
@@ -74,7 +87,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
-
     elevation: 24,
   },
   textStyle: {
@@ -82,5 +94,13 @@ const styles = StyleSheet.create({
     // color: Colors.titleColor,
     fontWeight: "500",
     // fontFamily: 'FontsFree-Net-Montserrat-Medium',
+  },
+  belowTextStyle: {
+    alignSelf: "center",
+    fontSize: 13,
+    marginTop: 2,
+    color: Colors.textColor,
+    textAlign: "center",
+    fontFamily: "Gentium-Basic-italic",
   },
 });

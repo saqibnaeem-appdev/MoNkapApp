@@ -9,14 +9,29 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-const CountryPhonePicker = () => {
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+const CountryPhonePicker = ({
+  text,
+  belowText,
+  borderWidth,
+  borderRadius,
+  borderColor,
+}) => {
   const [phoneNumber, setphoneNumber] = useState("");
   const phoneInput = useRef(null);
-
+  let [fontsLoaded] = useFonts({
+    "Gentium-Basic-italic": require("../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={styles.container}>
       <View style={styles.secondView}>
-        <Text style={styles.textStyle}>Enter Your Phone Number</Text>
+        <Text style={styles.textStyle}>{text}</Text>
       </View>
       <PhoneInput
         ref={phoneInput}
@@ -26,12 +41,18 @@ const CountryPhonePicker = () => {
         layout="second"
         withShadow
         autoFocus
-        containerStyle={styles.phoneContainer}
+        containerStyle={[
+          styles.phoneContainer,
+          { borderWidth: borderWidth ? borderWidth : null },
+          { borderRadius: borderRadius ? borderRadius : 5 },
+          { borderColor: borderColor ? borderColor : null },
+        ]}
         textContainerStyle={styles.textInput}
         // onChangeFormattedText={(text) => {
         //   setphoneNumber(text);
         // }}
       />
+      <Text style={styles.belowTextStyle}>{belowText}</Text>
     </View>
   );
 };
@@ -68,5 +89,12 @@ const styles = StyleSheet.create({
     // color: Colors.titleColor,
     fontWeight: "500",
     // fontFamily: 'FontsFree-Net-Montserrat-Medium',
+  },
+  belowTextStyle: {
+    alignSelf: "center",
+    fontSize: 13,
+    marginTop: 2,
+    color: Colors.textColor,
+    fontFamily: "Gentium-Basic-italic",
   },
 });
