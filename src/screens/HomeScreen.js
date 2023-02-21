@@ -27,6 +27,7 @@ import MyImage from "../components/ImageCompo";
 import Colors from "../../assets/theme/Colors";
 import HomeList from "../components/HomeList";
 import TotalBalanceInput from "../components/TotalBalanceInput";
+import TargetSaving from "./TargetSaving";
 
 const HomeScreen = ({ navigation }) => {
 
@@ -43,8 +44,8 @@ const HomeScreen = ({ navigation }) => {
           text={"Transfer"}
           url={require("../../assets/transferm.png")}
         />
-        <MyImage text={"Deposit"} url={require("../../assets/deposit.png")} />
-        <MyImage text={"Pay"} url={require("../../assets/pay.png")} />
+        <MyImage onPress={() =>navigation.navigate('DepositMoney')} text={"Deposit"} url={require("../../assets/deposit.png")} />
+        <MyImage  onPress={()=>navigation.navigate('PayMoney')} text={"Pay"} url={require("../../assets/pay.png")} />
       </View>
       <View
         style={{
@@ -57,7 +58,7 @@ const HomeScreen = ({ navigation }) => {
       >
        <HomeList onPress={() =>navigation.navigate('TransferMoney')} text={'MTN MoMo'} url={require("../../assets/mtMomo.png")} />
        <HomeList text={'Orange Money'} url={require("../../assets/orangeMoney.png")} />
-       <HomeList text={'Target Savings'} url={require("../../assets/targetbox.png")} />
+       <HomeList text={'Target Savings'} onPress={() =>navigation.navigate('TargetSaving')} url={require("../../assets/targetbox.png")} />
        <HomeList text={'Njangi [Tontin]'} url={require("../../assets/group-117.png")} />
        {/* <HomeList text={'MTN MoMo'} url={require("../../assets/mtMomo.png")} /> */}
        <View style={styles.HomeListParent}>

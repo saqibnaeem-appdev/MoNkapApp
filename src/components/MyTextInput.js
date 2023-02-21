@@ -18,6 +18,7 @@ const MyTextInput = ({text,placeholder,width}) => {
           borderColor: "blue",
           height: hp("5%"),
           borderRadius: 5,
+          paddingHorizontal:10,
         }}
         placeholder={placeholder}
         keyboardType={"default"}

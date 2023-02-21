@@ -109,7 +109,7 @@ const LoginScreen = ({ navigation }) => {
           <View style={styles.ButtonViewStyle}>{/* <ButtonCom /> */}</View>
         </>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -5,6 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AuthStack from "./AuthStack";
 import BottomTabScreen from "./BottomTab";
 import TransferMoney from "../screens/TransferMoney";
+import DepositMoney from "../screens/DepositMoney";
+import PayMoney from "../screens/PayMoney";
+import TargetSaving from '../screens/TargetSaving';
+
 
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
@@ -30,6 +34,27 @@ const MainStack = ({ navigation }) => {
           headerShown: false,
         }}
         component={TransferMoney}
+      />
+      <Stack.Screen
+        name="DepositMoney"
+        options={{
+          headerShown: false,
+        }}
+        component={DepositMoney}
+      />
+      <Stack.Screen
+        name="PayMoney"
+        options={{
+          headerShown: false,
+        }}
+        component={PayMoney}
+      />
+      <Stack.Screen
+        name="TargetSaving"
+        options={{
+          headerShown: false,
+        }}
+        component={TargetSaving}
       />
     </Stack.Navigator>
   );

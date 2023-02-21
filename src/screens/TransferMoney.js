@@ -6,6 +6,7 @@ import {
   TextInput,
   Dimensions,
   Image,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 const window = Dimensions.get("window");
@@ -39,520 +40,556 @@ const TransferMoney = () => {
 
   const navigation = useNavigation();
 
-  useEffect(() =>{
-    setRecipient('Momo');
-  },[])
+  useEffect(() => {
+    setRecipient("Momo");
+  }, []);
 
   return (
     <>
       <HeaderCom text={"Transfer Money"} onPress={() => navigation.goBack()} />
-      <View style={styles.TotalBalanceInput}>
-        <TotalBalanceInput text={"Total Balance"} />
-      </View>
+      <ScrollView>
+        <View style={styles.TotalBalanceInput}>
+          <TotalBalanceInput text={"Total Balance"} />
+        </View>
 
-      <View
-        style={[
-          styles.TotalBalanceInput,
-          { marginTop: 10, justifyContent: "center", alignItems: "center" },
-        ]}
-      >
-        <Text>Recipient</Text>
-        <View style={{ width: wp("90%"), flexDirection: "row" }}>
-          <TouchableOpacity
-            onPress={() => setRecipient("MonKap")}
-            style={{
-              padding: 5,
-              borderBottomWidth: recipient == 'MonKap' ? 1 :0 ,
-              borderBottomColor:'blue',
-              marginHorizontal: 2,
-              width: wp("22%"),
-            }}
-          >
-            <Image
-              style={{ width: wp("17%"), height: hp("5%") }}
-              source={require("../../assets/fontistogooglewal.png")}
-            />
-            <Text style={{ fontSize: 12, marginTop: 2 }}>MoNkap User</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setRecipient("Momo")}
-            style={{
-                borderBottomWidth: recipient == 'Momo' ? 1 :0 ,
-                borderBottomColor:'blue',
-                padding: 5, marginHorizontal: 2, width: wp("22%") }}
-          >
-            <Image
-              style={{ width: wp("17%"), height: hp("5%"),marginHorizontal:wp('1%') }}
-              source={require("../../assets/momo.png")}
-            />
-            <Text style={{ fontSize: 12, marginTop: 2,textAlign:'center' }}>MoMo</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setRecipient("OMoney")}
-            style={{
-                borderBottomWidth: recipient == 'OMoney' ? 1 :0 ,
-                borderBottomColor:'blue',
-                padding: 5, marginHorizontal: 2, width: wp("22%") }}
-          >
-            <Image
-              style={{ width: wp("17%"), height: hp("5%"),marginHorizontal:wp('1.5%') }}
-              source={require("../../assets/image-1.png")}
-            />
-            <Text style={{ fontSize: 12, marginTop: 2  ,textAlign:'center'}}>OMoney</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setRecipient("Others")}
-            style={{
-                borderBottomWidth: recipient == 'Others' ? 1 :0 ,
-                borderBottomColor:'blue',
-                padding: 5, marginHorizontal: 2, width: wp("22%") }}
-          >
-            <Image
+        <View
+          style={[
+            styles.TotalBalanceInput,
+            { marginTop: 10, justifyContent: "center", alignItems: "center" },
+          ]}
+        >
+          <Text>Recipient</Text>
+          <View style={{ width: wp("90%"), flexDirection: "row" }}>
+            <TouchableOpacity
+              onPress={() => setRecipient("MonKap")}
               style={{
-                width: wp("12%"),
-                height: hp("5%"),
-                marginHorizontal: 10,
+                padding: 5,
+                borderBottomWidth: recipient == "MonKap" ? 1 : 0,
+                borderBottomColor: "blue",
+                marginHorizontal: 2,
+                width: wp("23%"),
               }}
-              source={require("../../assets/group-239.png")}
-            />
-            <Text style={{ fontSize: 12, marginTop: 2,textAlign:'center' }}>Others</Text>
+            >
+              <Image
+                style={{ width: wp("17%"), height: hp("5%") }}
+                source={require("../../assets/fontistogooglewal.png")}
+              />
+              <Text style={{ fontSize: 12, marginTop: 2 }}>MoNkap User</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setRecipient("Momo")}
+              style={{
+                borderBottomWidth: recipient == "Momo" ? 1 : 0,
+                borderBottomColor: "blue",
+                padding: 5,
+                marginHorizontal: 2,
+                width: wp("22%"),
+              }}
+            >
+              <Image
+                style={{
+                  width: wp("17%"),
+                  height: hp("5%"),
+                  marginHorizontal: wp("1%"),
+                }}
+                source={require("../../assets/momo.png")}
+              />
+              <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+                MoMo
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setRecipient("OMoney")}
+              style={{
+                borderBottomWidth: recipient == "OMoney" ? 1 : 0,
+                borderBottomColor: "blue",
+                padding: 5,
+                marginHorizontal: 2,
+                width: wp("22%"),
+              }}
+            >
+              <Image
+                style={{
+                  width: wp("17%"),
+                  height: hp("5%"),
+                  marginHorizontal: wp("1.5%"),
+                }}
+                source={require("../../assets/image-1.png")}
+              />
+              <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+                OMoney
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setRecipient("Others")}
+              style={{
+                borderBottomWidth: recipient == "Others" ? 1 : 0,
+                borderBottomColor: "blue",
+                padding: 5,
+                marginHorizontal: 2,
+                width: wp("22%"),
+              }}
+            >
+              <Image
+                style={{
+                  width: wp("12%"),
+                  height: hp("5%"),
+                  marginHorizontal: 10,
+                }}
+                source={require("../../assets/group-239.png")}
+              />
+              <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+                Others
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {recipient == "MonKap" && (
+          <>
+            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text>Frequent Cash Out Points</Text>
+                <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
+                  <Text>Show Recent</Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{ justifyContent: "center", backgroundColor: "white" }}
+              >
+                {showRecent ? (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                  </View>
+                ) : (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                  </View>
+                )}
+
+                <View style={styles.sendToParent}>
+                  <MyTextInput
+                    text={"Send To"}
+                    placeholder={"Enter Money to Send"}
+                  />
+                  <TouchableOpacity style={styles.sendTOBtn}>
+                    <Image
+                      style={styles.sendToImage}
+                      source={require("../../assets/constact.png")}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Amount"}
+                  placeholder={"Enter Amount to Send"}
+                />
+                <TouchableOpacity style={styles.AmountBtn}>
+                  <View style={styles.SXFView}>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 14,
+                        textAlign: "center",
+                      }}
+                    >
+                      XSF
+                    </Text>
+                    <Image
+                      style={styles.SXFImage}
+                      source={require("../../assets/XFS.png")}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Reason"}
+                  placeholder={"Enter motive for Transfer"}
+                />
+              </View>
+            </View>
+          </>
+        )}
+        {recipient == "Momo" && (
+          <>
+            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text>Frequent Cash Out Points</Text>
+                <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
+                  <Text>Show Recent</Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{ justifyContent: "center", backgroundColor: "white" }}
+              >
+                {showRecent ? (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                  </View>
+                ) : (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                  </View>
+                )}
+
+                <View style={styles.sendToParent}>
+                  <MyTextInput
+                    text={"Send To"}
+                    placeholder={"Enter Money to Send"}
+                  />
+                  <TouchableOpacity style={styles.sendTOBtn}>
+                    <Image
+                      style={styles.sendToImage}
+                      source={require("../../assets/constact.png")}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Amount"}
+                  placeholder={"Enter Amount to Send"}
+                />
+                <TouchableOpacity style={styles.AmountBtn}>
+                  <View style={styles.SXFView}>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 14,
+                        textAlign: "center",
+                      }}
+                    >
+                      XSF
+                    </Text>
+                    <Image
+                      style={styles.SXFImage}
+                      source={require("../../assets/XFS.png")}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Reason"}
+                  placeholder={"Enter motive for Transfer"}
+                />
+              </View>
+            </View>
+          </>
+        )}
+        {recipient == "OMoney" && (
+          <>
+            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text>Frequent Cash Out Points</Text>
+                <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
+                  <Text>Show Recent</Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{ justifyContent: "center", backgroundColor: "white" }}
+              >
+                {showRecent ? (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                  </View>
+                ) : (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                  </View>
+                )}
+
+                <View style={styles.sendToParent}>
+                  <MyTextInput
+                    text={"Send To"}
+                    placeholder={"Enter Money to Send"}
+                  />
+                  <TouchableOpacity style={styles.sendTOBtn}>
+                    <Image
+                      style={styles.sendToImage}
+                      source={require("../../assets/constact.png")}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Amount"}
+                  placeholder={"Enter Amount to Send"}
+                />
+                <TouchableOpacity style={styles.AmountBtn}>
+                  <View style={styles.SXFView}>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 14,
+                        textAlign: "center",
+                      }}
+                    >
+                      XSF
+                    </Text>
+                    <Image
+                      style={styles.SXFImage}
+                      source={require("../../assets/XFS.png")}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Reason"}
+                  placeholder={"Enter motive for Transfer"}
+                />
+              </View>
+            </View>
+          </>
+        )}
+        {recipient == "Others" && (
+          <>
+            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text>Frequent Cash Out Points</Text>
+                <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
+                  <Text>Show Recent</Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{ justifyContent: "center", backgroundColor: "white" }}
+              >
+                {showRecent ? (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                  </View>
+                ) : (
+                  <View
+                    style={{ flexDirection: "row", justifyContent: "center" }}
+                  >
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/profile1.png")}
+                    />
+                    <RecentImage
+                      text={"jane"}
+                      url={require("../../assets/inactive.png")}
+                    />
+                    <RecentImage
+                      text={"Austin"}
+                      url={require("../../assets/profile6.png")}
+                    />
+                    <RecentImage
+                      text={"Kate wate"}
+                      url={require("../../assets/profile.png")}
+                    />
+                  </View>
+                )}
+
+                <View style={styles.sendToParent}>
+                  <MyTextInput
+                    text={"Send To"}
+                    placeholder={"Enter Money to Send"}
+                  />
+                  <TouchableOpacity style={styles.sendTOBtn}>
+                    <Image
+                      style={styles.sendToImage}
+                      source={require("../../assets/constact.png")}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Swift Code"}
+                  placeholder={"Enter motive for Transfer"}
+                />
+              </View>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Reason"}
+                  placeholder={"Enter motive for Transfer"}
+                />
+              </View>
+              <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
+                <MyTextInput
+                  text={"Amount"}
+                  placeholder={"Enter Amount to Send"}
+                />
+                <TouchableOpacity style={styles.AmountBtn}>
+                  <View style={styles.SXFView}>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 14,
+                        textAlign: "center",
+                      }}
+                    >
+                      XAF
+                    </Text>
+                    <Image
+                      style={styles.SXFImage}
+                      source={require("../../assets/XFS.png")}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </>
+        )}
+
+        <View style={styles.TotalBalance}>
+          <TouchableOpacity style={styles.deposit}>
+            <Text style={{ textAlign: "center", color: "white" }}>Deposit</Text>
           </TouchableOpacity>
         </View>
-      </View>
-
-      {recipient == "MonKap" && (
-        <>
-          <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text>Frequent Cash Out Points</Text>
-              <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                <Text>Show Recent</Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{ justifyContent: "center", backgroundColor: "white" }}
-            >
-              {showRecent ? (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                </View>
-              ) : (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                </View>
-              )}
-
-              <View style={styles.sendToParent}>
-                <MyTextInput
-                  text={"Send To"}
-                  placeholder={"Enter Money to Send"}
-                />
-                <TouchableOpacity style={styles.sendTOBtn}>
-                  <Image
-                    style={styles.sendToImage}
-                    source={require("../../assets/constact.png")}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Amount"}
-                placeholder={"Enter Amount to Send"}
-              />
-              <TouchableOpacity style={styles.AmountBtn}>
-                <View style={styles.SXFView}>
-                  <Text
-                    style={{
-                      color: "white",
-                      fontSize: 14,
-                      textAlign: "center",
-                    }}
-                  >
-                    XSF
-                  </Text>
-                  <Image
-                    style={styles.SXFImage}
-                    source={require("../../assets/XFS.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Reason"}
-                placeholder={"Enter motive for Transfer"}
-              />
-            </View>
-          </View>
-        </>
-      )}
-      {recipient == "Momo" && (
-        <>
-          <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text>Frequent Cash Out Points</Text>
-              <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                <Text>Show Recent</Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{ justifyContent: "center", backgroundColor: "white" }}
-            >
-              {showRecent ? (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                </View>
-              ) : (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                </View>
-              )}
-
-              <View style={styles.sendToParent}>
-                <MyTextInput
-                  text={"Send To"}
-                  placeholder={"Enter Money to Send"}
-                />
-                <TouchableOpacity style={styles.sendTOBtn}>
-                  <Image
-                    style={styles.sendToImage}
-                    source={require("../../assets/constact.png")}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Amount"}
-                placeholder={"Enter Amount to Send"}
-              />
-              <TouchableOpacity style={styles.AmountBtn}>
-                <View style={styles.SXFView}>
-                  <Text
-                    style={{
-                      color: "white",
-                      fontSize: 14,
-                      textAlign: "center",
-                    }}
-                  >
-                    XSF
-                  </Text>
-                  <Image
-                    style={styles.SXFImage}
-                    source={require("../../assets/XFS.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Reason"}
-                placeholder={"Enter motive for Transfer"}
-              />
-            </View>
-          </View>
-        </>
-      )}
-      {recipient == "OMoney" && (
-        <>
-          <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text>Frequent Cash Out Points</Text>
-              <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                <Text>Show Recent</Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{ justifyContent: "center", backgroundColor: "white" }}
-            >
-              {showRecent ? (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                </View>
-              ) : (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                </View>
-              )}
-
-              <View style={styles.sendToParent}>
-                <MyTextInput
-                  text={"Send To"}
-                  placeholder={"Enter Money to Send"}
-                />
-                <TouchableOpacity style={styles.sendTOBtn}>
-                  <Image
-                    style={styles.sendToImage}
-                    source={require("../../assets/constact.png")}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Amount"}
-                placeholder={"Enter Amount to Send"}
-              />
-              <TouchableOpacity style={styles.AmountBtn}>
-                <View style={styles.SXFView}>
-                  <Text
-                    style={{
-                      color: "white",
-                      fontSize: 14,
-                      textAlign: "center",
-                    }}
-                  >
-                    XSF
-                  </Text>
-                  <Image
-                    style={styles.SXFImage}
-                    source={require("../../assets/XFS.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Reason"}
-                placeholder={"Enter motive for Transfer"}
-              />
-            </View>
-          </View>
-        </>
-      )}
-      {recipient == "Others" && (
-        <>
-          <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text>Frequent Cash Out Points</Text>
-              <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                <Text>Show Recent</Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{ justifyContent: "center", backgroundColor: "white" }}
-            >
-              {showRecent ? (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                </View>
-              ) : (
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/profile1.png")}
-                  />
-                  <RecentImage
-                    text={"jane"}
-                    url={require("../../assets/inactive.png")}
-                  />
-                  <RecentImage
-                    text={"Austin"}
-                    url={require("../../assets/profile6.png")}
-                  />
-                  <RecentImage
-                    text={"Kate wate"}
-                    url={require("../../assets/profile.png")}
-                  />
-                </View>
-              )}
-
-              <View style={styles.sendToParent}>
-                <MyTextInput
-                  text={"Send To"}
-                  placeholder={"Enter Money to Send"}
-                />
-                <TouchableOpacity style={styles.sendTOBtn}>
-                  <Image
-                    style={styles.sendToImage}
-                    source={require("../../assets/constact.png")}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          <View style={[styles.TotalBalanceInput, { marginTop: 20 }]}>
-            
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Swift Code"}
-                placeholder={"Enter motive for Transfer"}
-              />
-            </View>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Reason"}
-                placeholder={"Enter motive for Transfer"}
-              />
-            </View>
-            <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-              <MyTextInput
-                text={"Amount"}
-                placeholder={"Enter Amount to Send"}
-              />
-              <TouchableOpacity style={styles.AmountBtn}>
-                <View style={styles.SXFView}>
-                  <Text
-                    style={{
-                      color: "white",
-                      fontSize: 14,
-                      textAlign: "center",
-                    }}
-                  >
-                    XAF
-                  </Text>
-                  <Image
-                    style={styles.SXFImage}
-                    source={require("../../assets/XFS.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </>
-      )}
-
-      <View style={styles.TotalBalance}>
-        <TouchableOpacity style={styles.deposit}>
-          <Text style={{ textAlign: "center", color: "white" }}>Deposit</Text>
-        </TouchableOpacity>
-      </View>
+      </ScrollView>
     </>
   );
 };
@@ -570,7 +607,7 @@ const styles = StyleSheet.create({
     width: wp("90%"),
     justifyContent: "center",
     alignSelf: "center",
-    marginVertical: hp('4%'),
+    marginVertical: hp("4%"),
     // backgroundColor: "white",
   },
   deposit: {
