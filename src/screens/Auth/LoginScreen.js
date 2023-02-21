@@ -112,7 +112,6 @@ const LoginScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
 export default LoginScreen;
 
 const styles = StyleSheet.create({
