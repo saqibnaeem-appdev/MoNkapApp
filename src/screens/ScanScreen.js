@@ -49,34 +49,13 @@ const ScanScreen = () => {
       >
         <Image
           style={{
-            width: wp("90%"),
-            height: hp("32%"),
-            marginTop: hp("18%"),
+            width: wp("60%"),
+            height: hp("30%"),
+            marginVertical: hp("25%"),
           }}
-          source={require("../../assets/undraw-swipe-profiles.png")}
+          source={require("../../assets/qr-code-cos-e-1.png")}
         />
-
       </View>
-
-      <View style={styles.TotalBalance}>
-        
-          <TouchableOpacity
-          onPress={() => navigation.navigate("NoCardWarning")}
-            style={[styles.deposit,{marginTop:10}]}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                color: "white",
-                // fontWeight: "bold",
-              }}
-            >
-             Exit
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-
     </View>
   );
 };

@@ -22,8 +22,10 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import HeaderCom from "../components/HeaderCom";
+import { useNavigation } from "@react-navigation/native";
 
 const TargetSaving = () => {
+  const navigation = useNavigation()
   return (
     <>
       <HeaderCom onPress={() => navigation.goBack()} text={"Target Saving"} />
@@ -75,7 +77,7 @@ const TargetSaving = () => {
 
 
       <View style={styles.TotalBalance}>
-            <TouchableOpacity style={styles.deposit}>
+            <TouchableOpacity onPress={() => navigation.navigate('MonKapHasYourBack')} style={styles.deposit}>
               <Text style={{ textAlign: "center", color: "white" ,fontWeight:'bold'}}>Start a Target Savings</Text>
             </TouchableOpacity>
           </View>

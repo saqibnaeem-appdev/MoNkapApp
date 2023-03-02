@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, } from "react-native";
 import React from "react";
 import { Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
