@@ -34,7 +34,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <>
-      <HeaderHome />
+      <HeaderHome navigation={navigation} />
 
      
      <TotalBalanceInput text={"Your balance"}/>
@@ -44,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
           text={"Transfer"}
           url={require("../../assets/transferm.png")}
         />
-        <MyImage onPress={() =>navigation.navigate('DepositMoney')} text={"Deposit"} url={require("../../assets/deposit.png")} />
+        <MyImage onPress={() =>navigation.navigate('DepositMoney')} text={"Deposit"} url={require("../../assets/deposit.png")} icon={'icon'} />
         <MyImage  onPress={()=>navigation.navigate('PayMoney')} text={"Pay"} url={require("../../assets/pay.png")} />
       </View>
       <View
@@ -59,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
        <HomeList onPress={() =>navigation.navigate('TransferMoney')} text={'MTN MoMo'} url={require("../../assets/mtMomo.png")} />
        <HomeList text={'Orange Money'} url={require("../../assets/orangeMoney.png")} />
        <HomeList text={'Target Savings'} onPress={() =>navigation.navigate('TargetSaving')} url={require("../../assets/targetbox.png")} />
-       <HomeList text={'Njangi [Tontin]'} url={require("../../assets/group-117.png")} />
+       <HomeList onPress={() =>navigation.navigate('Dashboard')}  text={'Njangi [Tontin]'} url={require("../../assets/group-117.png")} />
        {/* <HomeList text={'MTN MoMo'} url={require("../../assets/mtMomo.png")} /> */}
        <View style={styles.HomeListParent}>
       <View style={styles.HomeListChild}>
@@ -70,7 +70,7 @@ const HomeScreen = ({ navigation }) => {
           />
           <Text style={styles.HomeListText}>Link bank</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() =>navigation.navigate('LinkBank')} >
           <AntDesign name="right" size={20} color={'white'} />
         </TouchableOpacity>
       </View>
