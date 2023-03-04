@@ -32,9 +32,18 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 import DividerCompo from "../../components/DividerCompo";
+import ModalCom from "./../../components/ModalCom";
 const OMoneyHomeScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [value, setValue] = useState("25 548 000");
+  const [modalVisible, setModalVisible] = useState(false);
+  const handleIconPress = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
   const navigation = useNavigation();
   let [fontsLoaded] = useFonts({
     "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
@@ -47,6 +56,7 @@ const OMoneyHomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ModalCom visible={modalVisible} closeModal={closeModal} />
       <ScrollView>
         <View style={styles.ImageTextMainView}>
           <Image
@@ -127,221 +137,239 @@ const OMoneyHomeScreen = () => {
             >
               Recent Transactions
             </Text>
-            <Ionicons name="chevron-forward" size={30} color="black" />
-          </View>
-        </LinearGradient>
-        <View style={{ marginTop: "2%" }}>
-          <DividerCompo />
-        </View>
-        <View style={styles.groupBtnView}>
-          <LinearGradient
-            colors={[
-              Colors.OMoneySecondary,
-              Colors.OMoneySecondary,
-              Colors.gray,
-            ]}
-            start={{ y: -4, x: -0.2 }}
-            style={[
-              styles.balanceView,
-              {
-                width: wp("42%"),
-                height: hp("7%"),
-                marginTop: hp("3%"),
-                alignSelf: "center",
-              },
-            ]}
-          >
-            <View
-              style={{
-                width: wp("40%"),
-                justifyContent: "space-between",
-                alignSelf: "center",
-                flexDirection: "row",
-              }}
-            >
-              <Text
-                style={[
-                  styles.textStyle,
-                  { color: Colors.textColor, fontSize: 25, left: 5 },
-                ]}
-              >
-                Request
-              </Text>
-              <Image
-                source={require("../../../assets/Request.png")}
-                style={styles.imageStyle}
-              />
-            </View>
-          </LinearGradient>
-          <LinearGradient
-            colors={[
-              Colors.OMoneySecondary,
-              Colors.OMoneySecondary,
-              Colors.gray,
-            ]}
-            start={{ y: -4, x: -0.2 }}
-            style={[
-              styles.balanceView,
-              {
-                width: wp("42%"),
-                height: hp("7%"),
-                marginTop: hp("3%"),
-                alignSelf: "center",
-              },
-            ]}
-          >
-            <View
-              style={{
-                width: wp("40%"),
-                justifyContent: "space-between",
-                alignSelf: "center",
-                flexDirection: "row",
-              }}
-            >
-              <Text
-                style={[
-                  styles.textStyle,
-                  { color: Colors.textColor, fontSize: 25, left: 5 },
-                ]}
-              >
-                Transfer
-              </Text>
-              <Image
-                source={require("../../../assets/Transfer.png")}
-                style={[
-                  styles.imageStyle,
-                  { width: wp("9%"), height: hp("5%") },
-                ]}
-              />
-            </View>
-          </LinearGradient>
-        </View>
-        <View style={{ marginTop: "2%" }}>
-          <DividerCompo />
-        </View>
-        <View style={styles.groupBtnView}>
-          <LinearGradient
-            colors={[
-              Colors.OMoneySecondary,
-              Colors.OMoneySecondary,
-              Colors.gray,
-            ]}
-            start={{ y: -4, x: -0.2 }}
-            style={[
-              styles.balanceView,
-              {
-                width: wp("42%"),
-                height: hp("7%"),
-                marginTop: hp("3%"),
-                alignSelf: "center",
-              },
-            ]}
-          >
-            <View
-              style={{
-                width: wp("40%"),
-                justifyContent: "space-between",
-                alignSelf: "center",
-                flexDirection: "row",
-              }}
-            >
-              <Text
-                style={[
-                  styles.textStyle,
-                  { color: Colors.textColor, fontSize: 25, left: 5 },
-                ]}
-              >
-                Request
-              </Text>
-              <Image
-                source={require("../../../assets/Request.png")}
-                style={styles.imageStyle}
-              />
-            </View>
-          </LinearGradient>
-          <LinearGradient
-            colors={[
-              Colors.OMoneySecondary,
-              Colors.OMoneySecondary,
-              Colors.gray,
-            ]}
-            start={{ y: -4, x: -0.2 }}
-            style={[
-              styles.balanceView,
-              {
-                width: wp("42%"),
-                height: hp("7%"),
-                marginTop: hp("3%"),
-                alignSelf: "center",
-              },
-            ]}
-          >
-            <View
-              style={{
-                width: wp("40%"),
-                justifyContent: "space-between",
-                alignSelf: "center",
-                flexDirection: "row",
-              }}
-            >
-              <Text
-                style={[
-                  styles.textStyle,
-                  { color: Colors.textColor, fontSize: 25, left: 5 },
-                ]}
-              >
-                Transfer
-              </Text>
-              <Image
-                source={require("../../../assets/Transfer.png")}
-                style={[
-                  styles.imageStyle,
-                  { width: wp("9%"), height: hp("5%") },
-                ]}
-              />
-            </View>
-          </LinearGradient>
-        </View>
-        <LinearGradient
-          colors={[Colors.OMoneySecondary, Colors.OMoneySecondary, Colors.gray]}
-          start={{ y: -4, x: -0.2 }}
-          style={[
-            styles.balanceView,
-            { height: hp("7%"), marginTop: hp("3%") },
-          ]}
-        >
-          <View
-            style={{
-              width: wp("80%"),
-              justifyContent: "space-between",
-              alignSelf: "center",
-              flexDirection: "row",
-            }}
-          >
-            <View style={styles.PayView}>
-              <Text
-                style={[
-                  styles.textStyle,
-                  { color: Colors.textColor, fontSize: 25, fontWeight: "bold" },
-                ]}
-              >
-                PAY
-              </Text>
-            </View>
-            <Text
-              style={[
-                styles.textStyle,
-                { color: Colors.textColor, fontSize: 22 },
-              ]}
-            >
-              OMoney pAY
-            </Text>
-            <Image
-              source={require("../../../assets/Phone.png")}
-              style={[styles.imageStyle, { marginTop: "8%", width: wp("11%") }]}
+            <Ionicons
+              name="chevron-forward"
+              size={30}
+              color="black"
+              onPress={handleIconPress}
             />
           </View>
         </LinearGradient>
+        <View style={{ marginTop: "2%" }}>
+          <DividerCompo />
+        </View>
+        <View style={styles.groupBtnView}>
+          <LinearGradient
+            colors={[
+              Colors.OMoneySecondary,
+              Colors.OMoneySecondary,
+              Colors.gray,
+            ]}
+            start={{ y: -4, x: -0.2 }}
+            style={[
+              styles.balanceView,
+              {
+                width: wp("42%"),
+                height: hp("7%"),
+                marginTop: hp("3%"),
+                alignSelf: "center",
+              },
+            ]}
+          >
+            <View
+              style={{
+                width: wp("40%"),
+                justifyContent: "space-between",
+                alignSelf: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text
+                style={[
+                  styles.textStyle,
+                  { color: Colors.textColor, fontSize: 25, left: 5 },
+                ]}
+              >
+                Request
+              </Text>
+              <Image
+                source={require("../../../assets/Request.png")}
+                style={styles.imageStyle}
+              />
+            </View>
+          </LinearGradient>
+          <LinearGradient
+            colors={[
+              Colors.OMoneySecondary,
+              Colors.OMoneySecondary,
+              Colors.gray,
+            ]}
+            start={{ y: -4, x: -0.2 }}
+            style={[
+              styles.balanceView,
+              {
+                width: wp("42%"),
+                height: hp("7%"),
+                marginTop: hp("3%"),
+                alignSelf: "center",
+              },
+            ]}
+          >
+            <View
+              style={{
+                width: wp("40%"),
+                justifyContent: "space-between",
+                alignSelf: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text
+                style={[
+                  styles.textStyle,
+                  { color: Colors.textColor, fontSize: 25, left: 5 },
+                ]}
+              >
+                Transfer
+              </Text>
+              <Image
+                source={require("../../../assets/Transfer.png")}
+                style={[
+                  styles.imageStyle,
+                  { width: wp("9%"), height: hp("5%") },
+                ]}
+              />
+            </View>
+          </LinearGradient>
+        </View>
+        <View style={{ marginTop: "2%" }}>
+          <DividerCompo />
+        </View>
+        <View style={styles.groupBtnView}>
+          <LinearGradient
+            colors={[
+              Colors.OMoneySecondary,
+              Colors.OMoneySecondary,
+              Colors.gray,
+            ]}
+            start={{ y: -4, x: -0.2 }}
+            style={[
+              styles.balanceView,
+              {
+                width: wp("42%"),
+                height: hp("7%"),
+                marginTop: hp("3%"),
+                alignSelf: "center",
+              },
+            ]}
+          >
+            <View
+              style={{
+                width: wp("40%"),
+                justifyContent: "space-between",
+                alignSelf: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text
+                style={[
+                  styles.textStyle,
+                  { color: Colors.textColor, fontSize: 25, left: 5 },
+                ]}
+              >
+                Deposit
+              </Text>
+              <Image
+                source={require("../../../assets/Request.png")}
+                style={styles.imageStyle}
+              />
+            </View>
+          </LinearGradient>
+          <LinearGradient
+            colors={[
+              Colors.OMoneySecondary,
+              Colors.OMoneySecondary,
+              Colors.gray,
+            ]}
+            start={{ y: -4, x: -0.2 }}
+            style={[
+              styles.balanceView,
+              {
+                width: wp("42%"),
+                height: hp("7%"),
+                marginTop: hp("3%"),
+                alignSelf: "center",
+              },
+            ]}
+          >
+            <View
+              style={{
+                width: wp("40%"),
+                justifyContent: "space-between",
+                alignSelf: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text
+                style={[
+                  styles.textStyle,
+                  { color: Colors.textColor, fontSize: 25, left: 5 },
+                ]}
+              >
+                Cash Out
+              </Text>
+              <Image
+                source={require("../../../assets/Transfer.png")}
+                style={[
+                  styles.imageStyle,
+                  { width: wp("9%"), height: hp("5%") },
+                ]}
+              />
+            </View>
+          </LinearGradient>
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate("OMPay")}>
+          <LinearGradient
+            colors={[
+              Colors.OMoneySecondary,
+              Colors.OMoneySecondary,
+              Colors.gray,
+            ]}
+            start={{ y: -4, x: -0.2 }}
+            style={[
+              styles.balanceView,
+              { height: hp("7%"), marginTop: hp("3%") },
+            ]}
+          >
+            <View
+              style={{
+                width: wp("80%"),
+                justifyContent: "space-between",
+                alignSelf: "center",
+                flexDirection: "row",
+              }}
+            >
+              <View style={styles.PayView}>
+                <Text
+                  style={[
+                    styles.textStyle,
+                    {
+                      color: Colors.textColor,
+                      fontSize: 25,
+                      fontWeight: "bold",
+                    },
+                  ]}
+                >
+                  PAY
+                </Text>
+              </View>
+              <Text
+                style={[
+                  styles.textStyle,
+                  { color: Colors.textColor, fontSize: 22 },
+                ]}
+              >
+                OMoney pAY
+              </Text>
+              <Image
+                source={require("../../../assets/Phone.png")}
+                style={[
+                  styles.imageStyle,
+                  { marginTop: "8%", width: wp("11%") },
+                ]}
+              />
+            </View>
+          </LinearGradient>
+        </TouchableOpacity>
         <LinearGradient
           colors={[Colors.OMoneySecondary, Colors.OMoneySecondary, Colors.gray]}
           start={{ y: -4, x: -0.2 }}

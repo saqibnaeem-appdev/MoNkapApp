@@ -1,25 +1,35 @@
+/** @format */
+
 import { StyleSheet, Text, View, TextInput } from "react-native";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import Colors from "../../assets/theme/Colors";
 
-
-const MyTextInput = ({text,placeholder,width}) => {
+const MyTextInput = ({ text, placeholder, width, borderColor }) => {
   const [value, setValue] = useState();
   return (
     <View>
       <Text style={{ fontSize: 16, fontWeight: "400" }}>{text}</Text>
       <TextInput
-        style={{
-          width: width ? wp("80%") : wp('90%'),
-          borderWidth: 1,
-          borderColor: "blue",
-          height: hp("5%"),
-          borderRadius: 5,
-          paddingHorizontal:10,
-        }}
+        style={[
+          {
+            width: width ? wp("80%") : wp("90%"),
+            borderWidth: 1,
+
+            height: hp("5%"),
+            borderRadius: 5,
+            paddingHorizontal: 10,
+          },
+          {},
+          {
+            borderColor: borderColor
+              ? Colors.OMoneySecondary
+              : Colors.secondary,
+          },
+        ]}
         placeholder={placeholder}
         keyboardType={"default"}
         //   placeholderTextColor={}
