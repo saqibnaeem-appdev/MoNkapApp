@@ -33,6 +33,7 @@ import {
 } from "@expo/vector-icons";
 import DividerCompo from "../../components/DividerCompo";
 import ModalCom from "./../../components/ModalCom";
+import { Pressable } from "react-native";
 const OMoneyHomeScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [value, setValue] = useState("25 548 000");
@@ -166,13 +167,14 @@ const OMoneyHomeScreen = () => {
               },
             ]}
           >
-            <View
+            <Pressable
               style={{
                 width: wp("40%"),
                 justifyContent: "space-between",
                 alignSelf: "center",
                 flexDirection: "row",
               }}
+              onPress={() => navigation.navigate("OMoneyRequestMoneyFrequent")}
             >
               <Text
                 style={[
@@ -186,7 +188,7 @@ const OMoneyHomeScreen = () => {
                 source={require("../../../assets/Request.png")}
                 style={styles.imageStyle}
               />
-            </View>
+            </Pressable>
           </LinearGradient>
           <LinearGradient
             colors={[
@@ -205,13 +207,14 @@ const OMoneyHomeScreen = () => {
               },
             ]}
           >
-            <View
+            <Pressable
               style={{
                 width: wp("40%"),
                 justifyContent: "space-between",
                 alignSelf: "center",
                 flexDirection: "row",
               }}
+              onPress={() => navigation.navigate("SendMoney")}
             >
               <Text
                 style={[
@@ -228,7 +231,7 @@ const OMoneyHomeScreen = () => {
                   { width: wp("9%"), height: hp("5%") },
                 ]}
               />
-            </View>
+            </Pressable>
           </LinearGradient>
         </View>
         <View style={{ marginTop: "2%" }}>
@@ -252,13 +255,14 @@ const OMoneyHomeScreen = () => {
               },
             ]}
           >
-            <View
+            <Pressable
               style={{
                 width: wp("40%"),
                 justifyContent: "space-between",
                 alignSelf: "center",
                 flexDirection: "row",
               }}
+              onPress={() => navigation.navigate("DepositMoney")}
             >
               <Text
                 style={[
@@ -272,7 +276,7 @@ const OMoneyHomeScreen = () => {
                 source={require("../../../assets/Request.png")}
                 style={styles.imageStyle}
               />
-            </View>
+            </Pressable>
           </LinearGradient>
           <LinearGradient
             colors={[
@@ -291,13 +295,14 @@ const OMoneyHomeScreen = () => {
               },
             ]}
           >
-            <View
+            <Pressable
               style={{
                 width: wp("40%"),
                 justifyContent: "space-between",
                 alignSelf: "center",
                 flexDirection: "row",
               }}
+              onPress={() => navigation.navigate("CashOutMoneyScreen")}
             >
               <Text
                 style={[
@@ -314,7 +319,7 @@ const OMoneyHomeScreen = () => {
                   { width: wp("9%"), height: hp("5%") },
                 ]}
               />
-            </View>
+            </Pressable>
           </LinearGradient>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate("OMPay")}>
