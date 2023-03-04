@@ -13,6 +13,7 @@ import OMoney_validation from "../screens/OMoney/OMoney_validation";
 import OMoney_validation_successful from "../screens/OMoney/OMoney_validation _successful";
 import OMoney_on_monkap_profile from "../screens/OMoney/OMoney_on_monkap_profile";
 import OMoneyHomeScreen from "../screens/OMoney/OMoneyHomeScreen";
+import OM_pay from "../screens/OMoney/OM_pay";
 import Colors from "../../assets/theme/Colors";
 
 const Stack = createStackNavigator();
@@ -152,6 +153,34 @@ const MainStack = ({ navigation }) => {
           },
         }}
         component={OMoneyHomeScreen}
+      />
+      <Stack.Screen
+        name="OMPay"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "MoMo Pay",
+          headerTitleStyle: {
+            fontSize: 20,
+            color: Colors.textColor,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={OM_pay}
       />
     </Stack.Navigator>
   );
