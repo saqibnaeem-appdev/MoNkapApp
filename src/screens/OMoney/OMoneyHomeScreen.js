@@ -383,13 +383,14 @@ const OMoneyHomeScreen = () => {
             { height: hp("7%"), marginTop: hp("3%") },
           ]}
         >
-          <View
+          <Pressable
             style={{
               width: wp("80%"),
               justifyContent: "space-between",
               alignSelf: "center",
               flexDirection: "row",
             }}
+            onPress={() => navigation.navigate("OMoneyMockProfile")}
           >
             <Text
               style={[
@@ -402,7 +403,7 @@ const OMoneyHomeScreen = () => {
             <Image source={require("../../../assets/AirTime.png")} />
             <Image source={require("../../../assets/SMS.png")} />
             <Image source={require("../../../assets/Data.png")} />
-          </View>
+          </Pressable>
         </LinearGradient>
         <View style={{ height: hp("5%") }}></View>
       </ScrollView>

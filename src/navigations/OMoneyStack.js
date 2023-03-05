@@ -19,6 +19,7 @@ import OMoneyRequestMoneyFrequent from "../screens/OMoney/OMoneyRequestMoneyFreq
 import SendMoney from "./../screens/OMoney/SendMoney";
 import DepositMoney from "./../screens/OMoney/DepositeMoney";
 import CashOutMoneyScreen from "./../screens/OMoney/CashOutMoneyScreen";
+import OMoneyMockProfile from "./../screens/OMoney/OMoneyMockProfile";
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
   return (
@@ -300,6 +301,35 @@ const MainStack = ({ navigation }) => {
           },
         }}
         component={CashOutMoneyScreen}
+      />
+      <Stack.Screen
+        name="OMoneyMockProfile"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "OM RECHARGE",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={OMoneyMockProfile}
       />
     </Stack.Navigator>
   );
