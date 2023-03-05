@@ -15,7 +15,11 @@ import OMoney_on_monkap_profile from "../screens/OMoney/OMoney_on_monkap_profile
 import OMoneyHomeScreen from "../screens/OMoney/OMoneyHomeScreen";
 import OM_pay from "../screens/OMoney/OM_pay";
 import Colors from "../../assets/theme/Colors";
-
+import OMoneyRequestMoneyFrequent from "../screens/OMoney/OMoneyRequestMoneyFrequent";
+import SendMoney from "./../screens/OMoney/SendMoney";
+import DepositMoney from "./../screens/OMoney/DepositeMoney";
+import CashOutMoneyScreen from "./../screens/OMoney/CashOutMoneyScreen";
+import OMoneyMockProfile from "./../screens/OMoney/OMoneyMockProfile";
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
   return (
@@ -181,6 +185,151 @@ const MainStack = ({ navigation }) => {
           },
         }}
         component={OM_pay}
+      />
+      <Stack.Screen
+        name="OMoneyRequestMoneyFrequent"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "REQUEST MONEY",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={OMoneyRequestMoneyFrequent}
+      />
+      <Stack.Screen
+        name="SendMoney"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "Send MONEY",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={SendMoney}
+      />
+      <Stack.Screen
+        name="DepositMoney"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "Deposit Money",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={DepositMoney}
+      />
+      <Stack.Screen
+        name="CashOutMoneyScreen"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "Cash Out Money",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={CashOutMoneyScreen}
+      />
+      <Stack.Screen
+        name="OMoneyMockProfile"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "OM RECHARGE",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={OMoneyMockProfile}
       />
     </Stack.Navigator>
   );
