@@ -9,6 +9,7 @@ import {
   FlatList,
   Modal,
   Pressable,
+  TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
 const window = Dimensions.get("window");
@@ -28,50 +29,9 @@ import HeaderCom from "../components/HeaderCom";
 import { useNavigation } from "@react-navigation/native";
 // import MyTextInput from "../components/MyTextInput";
 import { Calendar, CalendarList, Agenda } from "react-native-calendars";
-import { LocaleConfig } from "react-native-calendars";
 
-LocaleConfig.locales["fr"] = {
-  monthNames: [
-    "Janvier",
-    "Février",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juillet",
-    "Août",
-    "Septembre",
-    "Octobre",
-    "Novembre",
-    "Décembre",
-  ],
-  monthNamesShort: [
-    "Janv.",
-    "Févr.",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juil.",
-    "Août",
-    "Sept.",
-    "Oct.",
-    "Nov.",
-    "Déc.",
-  ],
-  dayNames: [
-    "Dimanche",
-    "Lundi",
-    "Mardi",
-    "Mercredi",
-    "Jeudi",
-    "Vendredi",
-    "Samedi",
-  ],
-  dayNamesShort: ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."],
-  today: "Aujourd'hui",
-};
-LocaleConfig.defaultLocale = "fr";
+
+
 
 const images = [
   { id: 1, name: "house", source: require("../../assets/group45.png") },
@@ -162,7 +122,19 @@ const MyTextInput3 = ({ text, placeholder, width }) => {
 
 const MonKapHasYourBack = () => {
   const navigation = useNavigation();
-  const [openCalendarModal, setOpenCalendarModal] = useState(false);
+  // const [openCalendarModal, setOpenCalendarModal] = useState(false);
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const toggleModalVisibility = () => {
+    setIsModalVisible((prevState) => !prevState);
+  };
+
+  const handleDateSelect = (date) => {
+    setSelectedDate(date.dateString);
+    toggleModalVisibility();
+  };
 
   const renderItem = ({ item }) => (
     <View
@@ -239,7 +211,7 @@ const MonKapHasYourBack = () => {
             placeholder={"Enter Amount to Send"}
           />
           <TouchableOpacity
-            onPress={() => setOpenCalendarModal(true)}
+           onPress={toggleModalVisibility}
             style={styles.AmountBtnCalendar}
           >
             <View style={styles.SXFViewCalendar}>
@@ -260,98 +232,24 @@ const MonKapHasYourBack = () => {
           </TouchableOpacity>
         </View>
       </View>
-      {openCalendarModal == true ? (
-        <View style={styles.centeredView}>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={openCalendarModal}
-            onRequestClose={() => {
-              Alert.alert("Modal has been closed.");
-              setModalVisible(!openCalendarModal);
-            }}
-          >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <Calendar
-                style={{width:wp('90%'),color:'black'}}
-                  // Initially visible month. Default = now
-                  initialDate={"2012-03-01"}
-                  // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
-                  minDate={"2012-05-10"}
-                  // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-                  maxDate={"2012-05-30"}
-                  // Handler which gets executed on day press. Default = undefined
-                  onDayPress={(day) => {
-                    console.log("selected day", day);
-                  }}
-                  // Handler which gets executed on day long press. Default = undefined
-                  onDayLongPress={(day) => {
-                    console.log("selected day", day);
-                  }}
-                  // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-                  monthFormat={"yyyy MM"}
-                  // Handler which gets executed when visible month changes in calendar. Default = undefined
-                  onMonthChange={(month) => {
-                    console.log("month changed", month);
-                  }}
-                  // Hide month navigation arrows. Default = false
-                  hideArrows={true}
-                  // Replace default arrows with custom ones (direction can be 'left' or 'right')
-                  renderArrow={(direction) => <Arrow />}
-                  // Do not show days of other months in month page. Default = false
-                  hideExtraDays={true}
-                  // If hideArrows = false and hideExtraDays = false do not switch month when tapping on greyed out
-                  // day from another month that is visible in calendar page. Default = false
-                  disableMonthChange={true}
-                  // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday
-                  firstDay={1}
-                  // Hide day names. Default = false
-                  hideDayNames={true}
-                  // Show week numbers to the left. Default = false
-                  showWeekNumbers={true}
-                  // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-                  onPressArrowLeft={(subtractMonth) => subtractMonth()}
-                  // Handler which gets executed when press arrow icon right. It receive a callback can go next month
-                  onPressArrowRight={(addMonth) => addMonth()}
-                  // Disable left arrow. Default = false
-                  disableArrowLeft={true}
-                  // Disable right arrow. Default = false
-                  disableArrowRight={true}
-                  // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
-                  disableAllTouchEventsForDisabledDays={true}
-                  // Replace default month and year title with custom one. the function receive a date as parameter
-                  renderHeader={(date) => {
-                    /*Return JSX*/
-                  }}
-                  // Enable the option to swipe between months. Default = false
-                  enableSwipeMonths={true}
+      
 
-                  markedDates={{
-                    '2012-05-16': {selected: true, marked: true, selectedColor: 'blue'},
-                    '2012-05-17': {marked: true},
-                    '2012-05-18': {marked: true, dotColor: 'red', activeOpacity: 0},
-                    '2012-05-19': {disabled: true, disableTouchEvent: true}
-                  }}
-                />
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setOpenCalendarModal(!openCalendarModal)}
-                >
-                  <Text style={styles.textStyle}>Hide Calendar</Text>
-                </Pressable>
-              </View>
+      <Modal
+        visible={isModalVisible}
+        // animationType="slide"
+        transparent
+      >
+        <TouchableWithoutFeedback onPress={toggleModalVisibility}>
+          <View style={styles.modalView}>
+            <View style={styles.calendarContainer}>
+              <Calendar onDayPress={handleDateSelect} />
             </View>
-          </Modal>
-          <Pressable
-            style={[styles.button, styles.buttonOpen]}
-            onPress={() => setOpenCalendarModal(true)}
-          >
-            <Text style={styles.textStyle}>Show Modal</Text>
-          </Pressable>
-        </View>
-      ) : null}
-
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+      {selectedDate !== "" && (
+        <Text style={styles.selectedDate}>{selectedDate}</Text>
+      )}
       {/* <View
           style={[
             styles.topPara,
@@ -411,6 +309,23 @@ const MonKapHasYourBack = () => {
 export default MonKapHasYourBack;
 
 const styles = StyleSheet.create({
+  selectedDate: {
+    marginTop: hp("1"),
+    fontSize: hp("2"),
+    fontWeight: "bold",
+    color: 'blue',
+  },
+  calendarContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 5,
+    padding: wp("4"),
+  },
+  modalView: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "rgba(0,0,0,0.5)",
+    paddingHorizontal: wp("5"),
+  },
   centeredView: {
     // width:wp('100%'),
     flex: 1,
@@ -418,22 +333,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
-  modalView: {
-    width:wp('90%'),
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
+
   button: {
     borderRadius: 20,
     padding: 10,

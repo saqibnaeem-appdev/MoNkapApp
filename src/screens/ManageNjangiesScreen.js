@@ -20,9 +20,16 @@ import StartingDate from "../componentsMaryam/StartingDate";
 import Input from "../componentsMaryam/TextInput";
 import Xaf from "../componentsMaryam/XAF";
 import Continue from "../componentsMaryam/ContinueButton";
+import HeaderCom from "../components/HeaderCom";
+import { useNavigation } from "@react-navigation/native";
 const Manage = () => {
+
+  const navigation = useNavigation()
+
   return (
-    <SafeAreaView style={styles.container}>
+    <>
+    <HeaderCom onPress={()=>navigation.goBack()} text={'Manage Njangi'} />
+    <View style={styles.container}>
       <View style={styles.innerContainer}>
         <Label label="Name" />
         <Input placeholder="Enter the name" />
@@ -50,7 +57,8 @@ const Manage = () => {
         <Spacer />
         <Continue />
       </View>
-    </SafeAreaView>
+    </View>
+    </>
   );
 };
 

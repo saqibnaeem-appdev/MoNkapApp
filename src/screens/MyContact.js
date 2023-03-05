@@ -27,6 +27,7 @@ import HeaderCom from "../components/HeaderCom";
 import Colors from "../../assets/theme/Colors";
 import DividerCompo from "../components/DividerCompo";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const DATA = [
   {
@@ -47,8 +48,10 @@ const DATA = [
   },
 ];
 
-const MomoScreen = () => {
+const MyContact = () => {
   const [text, setText] = useState("");
+
+  const navigation = useNavigation()
 
   const renderItem = ({ item }) => (
     <>
@@ -111,7 +114,7 @@ const MomoScreen = () => {
 
   return (
     <ScrollView>
-      <HeaderCom text={"Contacts"} />
+      <HeaderCom onPress={() => navigation.goBack()} text={"Contacts"} />
 
       <View style={styles.container}>
         <Image
@@ -136,7 +139,7 @@ const MomoScreen = () => {
   );
 };
 
-export default MomoScreen;
+export default MyContact;
 
 const styles = StyleSheet.create({
   searchIcon: {

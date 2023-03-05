@@ -27,6 +27,7 @@ import ScanScreen from '../screens/ScanScreen';
 import NoCardForm from '../screens/NoCardForm';
 import NoCardWarning from "../screens/NoCardWarning";
 import LinkBank from '../screens/LinkBank';
+import MyContact from '../screens/MyContact';
 
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
@@ -206,6 +207,13 @@ const MainStack = ({ navigation }) => {
           headerShown: false,
         }}
         component={LinkBank}
+      />
+      <Stack.Screen
+        name="MyContact"
+        options={{
+          headerShown: false,
+        }}
+        component={MyContact}
       />
     </Stack.Navigator>
   );

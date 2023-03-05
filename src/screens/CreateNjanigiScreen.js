@@ -23,10 +23,16 @@ import Continue from "../componentsMaryam/ContinueButton";
 import Xaf from "../componentsMaryam/XAF";
 import StartingDate from "../componentsMaryam/StartingDate";
 import Sessions from "../componentsMaryam/Sessions";
+import HeaderCom from "../components/HeaderCom";
+import { useNavigation } from "@react-navigation/native";
 
 const Create = () => {
+  const navigation = useNavigation()
   return (
-    <SafeAreaView style={styles.container}>
+    <>
+    
+      <HeaderCom onPress={() =>navigation.goBack()} text={'Create Njangui'} />
+    <View style={styles.container}>
       <ScrollView
         // keyboardShouldPersistTaps="handled"
         // contentContainerStyle={{ padding: 10 }}
@@ -103,7 +109,8 @@ const Create = () => {
           <Continue />
         </KeyboardAvoidingView>
       </ScrollView>
-    </SafeAreaView>
+    </View>
+    </>
   );
 };
 

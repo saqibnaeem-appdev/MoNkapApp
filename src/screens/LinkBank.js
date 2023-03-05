@@ -36,7 +36,7 @@ const LinkBank = () => {
 
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
-      <HeaderCom onPress={() =>navigation.goBack()}  />
+      <HeaderCom onPress={() =>navigation.goBack()}  text={'Link Bank'} />
 
       <View style={{ width: wp("80%"), alignSelf: "center" }}>
         <Text style={{ fontSize: 20, fontWeight: "600" ,marginTop:15}}>

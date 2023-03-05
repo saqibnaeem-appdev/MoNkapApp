@@ -18,7 +18,7 @@ const Dashboard = ({ navigation }) => {
   const [four, setFour] = useState(false);
   return (
     <View style={styles.container}>
-      <HeaderCom text={'Njangi'}/>
+      <HeaderCom onPress={() => navigation.goBack()} text={'Njangi'}/>
       <View style={styles.innerContainer}>
         {/********* FIRST BOX **************/}
         <View

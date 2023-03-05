@@ -211,7 +211,7 @@ const TransferMoney = () => {
                     text={"Send To"}
                     placeholder={"Enter Money to Send"}
                   />
-                  <TouchableOpacity style={styles.sendTOBtn}>
+                  <TouchableOpacity onPress={() =>navigation.navigate('MyContact')} style={styles.sendTOBtn}>
                     <Image
                       style={styles.sendToImage}
                       source={require("../../assets/constact.png")}
@@ -319,7 +319,7 @@ const TransferMoney = () => {
                     text={"Send To"}
                     placeholder={"Enter Money to Send"}
                   />
-                  <TouchableOpacity style={styles.sendTOBtn}>
+                  <TouchableOpacity  onPress={() =>navigation.navigate('MyContact')}  style={styles.sendTOBtn}>
                     <Image
                       style={styles.sendToImage}
                       source={require("../../assets/constact.png")}
@@ -427,7 +427,7 @@ const TransferMoney = () => {
                     text={"Send To"}
                     placeholder={"Enter Money to Send"}
                   />
-                  <TouchableOpacity style={styles.sendTOBtn}>
+                  <TouchableOpacity  onPress={() =>navigation.navigate('MyContact')}  style={styles.sendTOBtn}>
                     <Image
                       style={styles.sendToImage}
                       source={require("../../assets/constact.png")}
@@ -535,7 +535,7 @@ const TransferMoney = () => {
                     text={"Send To"}
                     placeholder={"Enter Money to Send"}
                   />
-                  <TouchableOpacity style={styles.sendTOBtn}>
+                  <TouchableOpacity  onPress={() =>navigation.navigate('MyContact')}  style={styles.sendTOBtn}>
                     <Image
                       style={styles.sendToImage}
                       source={require("../../assets/constact.png")}
