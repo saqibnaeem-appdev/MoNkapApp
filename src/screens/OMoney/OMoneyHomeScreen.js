@@ -32,17 +32,19 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 import DividerCompo from "../../components/DividerCompo";
-import ModalCom from "./../../components/ModalCom";
+import ModalComponent from "./../../components/ModalCom";
 import { Pressable } from "react-native";
+
 const OMoneyHomeScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [value, setValue] = useState("25 548 000");
   const [modalVisible, setModalVisible] = useState(false);
-  const handleIconPress = () => {
+
+  const handleOpenModal = () => {
     setModalVisible(true);
   };
 
-  const closeModal = () => {
+  const handleCloseModal = () => {
     setModalVisible(false);
   };
   const navigation = useNavigation();
@@ -57,7 +59,10 @@ const OMoneyHomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ModalCom visible={modalVisible} closeModal={closeModal} />
+      <ModalComponent
+        visible={modalVisible}
+        onClose={() => handleCloseModal()}
+      />
       <ScrollView>
         <View style={styles.ImageTextMainView}>
           <Image
@@ -142,7 +147,7 @@ const OMoneyHomeScreen = () => {
               name="chevron-forward"
               size={30}
               color="black"
-              onPress={handleIconPress}
+              onPress={() => handleOpenModal()}
             />
           </View>
         </LinearGradient>

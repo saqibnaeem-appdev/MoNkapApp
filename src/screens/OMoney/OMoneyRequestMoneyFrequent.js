@@ -24,6 +24,7 @@ import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
+import ModalComponent from "../../components/ModalCom";
 import ButtonCom from "../../components/ButtonCom";
 import {
   MaterialCommunityIcons,
@@ -37,6 +38,16 @@ import RecentImage from "../../components/ImageCompo";
 import MyTextInput from "../../components/MyTextInput";
 const OMoneyRequestMoneyFrequent = () => {
   const [showRecent, setShowRecent] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
   const navigation = useNavigation();
   let [fontsLoaded] = useFonts({
     "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
@@ -49,6 +60,10 @@ const OMoneyRequestMoneyFrequent = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ModalComponent
+        visible={modalVisible}
+        onClose={() => handleCloseModal()}
+      />
       <View style={styles.ImageTextMainView}>
         <Image
           source={require("../../../assets/OMoneyHomeLogo.png")}
@@ -98,6 +113,7 @@ const OMoneyRequestMoneyFrequent = () => {
             name="chevron-forward"
             size={30}
             color="black"
+            onPress={() => handleOpenModal()}
             // onPress={handleIconPress}
           />
         </View>
@@ -209,7 +225,10 @@ const OMoneyRequestMoneyFrequent = () => {
             text={"Send To"}
             placeholder={"Enter Name or MoMo Number"}
           />
-          <TouchableOpacity style={styles.sendTOBtn}>
+          <TouchableOpacity
+            style={styles.sendTOBtn}
+            onPress={() => navigation.navigate("SearchContact")}
+          >
             <Image
               style={styles.sendToImage}
               source={require("../../../assets/constact.png")}

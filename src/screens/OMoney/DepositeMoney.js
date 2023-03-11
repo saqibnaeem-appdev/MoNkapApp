@@ -35,8 +35,21 @@ import {
 } from "@expo/vector-icons";
 import RecentImage from "../../components/ImageCompo";
 import MyTextInput from "../../components/MyTextInput";
+import { Pressable } from "react-native";
+import ModalComponent from "../../components/ModalCom";
 const DepositeMoney = () => {
   const [showRecent, setShowRecent] = useState(true);
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
   const navigation = useNavigation();
   let [fontsLoaded] = useFonts({
     "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
@@ -49,6 +62,10 @@ const DepositeMoney = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ModalComponent
+        visible={modalVisible}
+        onClose={() => handleCloseModal()}
+      />
       <View style={styles.ImageTextMainView}>
         <Image
           source={require("../../../assets/OMoneyHomeLogo.png")}
@@ -98,6 +115,7 @@ const DepositeMoney = () => {
             name="chevron-forward"
             size={30}
             color="black"
+            onPress={() => handleOpenModal()}
             // onPress={handleIconPress}
           />
         </View>
@@ -214,7 +232,10 @@ const DepositeMoney = () => {
             text={"Deposit Point"}
             placeholder={"Enter Number or Scan Code"}
           />
-          <TouchableOpacity style={styles.sendTOBtn}>
+          <TouchableOpacity
+            style={styles.sendTOBtn}
+            onPress={() => navigation.navigate("ScannerScreen")}
+          >
             <Image
               style={[
                 styles.sendToImage,

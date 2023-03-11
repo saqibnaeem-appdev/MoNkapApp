@@ -1,68 +1,164 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import {
-  Modal,
-  View,
   Text,
-  Button,
+  TouchableOpacity,
+  View,
   FlatList,
-  SafeAreaView,
   StyleSheet,
+  Image,
+  SafeAreaView,
 } from "react-native";
+import Modal from "react-native-modal";
 import Colors from "../../assets/theme/Colors";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+const ModalComponent = ({ visible, onClose }) => {
+  let [fontsLoaded] = useFonts({
+    italic: require("../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+  const cardData = [
+    {
+      id: 1,
+      status: "tranfer",
+      time: "Jul 18th  - 5:30pm",
+      name: "John Doe",
+      bio: "Stella Claire Lum Nee Slamamangarie",
+      image: require("../../assets/Deliverd.png"),
+      imageStatus: require("../../assets/Transfer.png"),
+      price: "21,000 XAF",
+      avatar: "https://randomuser.me/api/portraits/women/1.jpg",
+    },
+    {
+      id: 2,
+      status: "Request",
+      time: "Jul 19th  - 5:30pm",
+      name: "Jane Doe",
+      bio: "Luis Nana Dibango Ebonggo",
+      image: require("../../assets/Declined.png"),
+      imageStatus: require("../../assets/Transfer.png"),
+      price: "21,000 XAF",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+  ];
 
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-];
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-const MyModal = ({ visible, closeModal }) => {
-  return (
-    <Modal visible={visible}>
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={DATA}
-          renderItem={({ item }) => <Item title={item.title} />}
-          keyExtractor={(item) => item.id}
+  const renderCard = ({ item }) => (
+    <View style={styles.card}>
+      <View style={styles.imageView}>
+        <Text style={styles.title}>{item.status}</Text>
+        <Text style={styles.title}>{item.time}</Text>
+      </View>
+      <View style={styles.cardTopContent}>
+        <Image source={{ uri: item.avatar }} style={styles.avatar} />
+        <View style={{ width: "70%" }}>
+          <Text style={styles.title}>{item.bio.substring(0, 30) + "..."}</Text>
+        </View>
+      </View>
+      <View style={styles.cardBottomContent}>
+        <Image
+          source={item.imageStatus}
+          resizeMode="contain"
+          style={styles.belowImagesStyle}
         />
-      </SafeAreaView>
-      <Button title="Close" onPress={closeModal} />
+        <Image source={item.image} style={styles.image} resizeMode="contain" />
+        <Text style={styles.subtitle}>{item.price}</Text>
+      </View>
+    </View>
+  );
+
+  return (
+    <Modal isVisible={visible} onBackdropPress={() => onClose()}>
+      <View style={styles.modal}>
+        <TouchableOpacity onPress={() => onClose()}>
+          <Text style={{ fontFamily: "italic", fontSize: 25 }}>Close</Text>
+        </TouchableOpacity>
+        <SafeAreaView style={styles.safeAreaContainer}>
+          <FlatList
+            data={cardData}
+            renderItem={renderCard}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </SafeAreaView>
+      </View>
     </Modal>
   );
 };
+
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    height: 100,
-    backgroundColor: Colors.transparent,
-    // marginTop: StatusBar.currentHeight || 0,
+  modal: {
+    flex: 1,
+    backgroundColor: Colors.white,
+    alignSelf: "center",
   },
-  item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+  safeAreaContainer: {
+    flex: 1,
+    backgroundColor: Colors.greyLight,
+    marginTop: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  card: {
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+    marginVertical: 10,
+    marginHorizontal: 10,
+    padding: 10,
+    shadowColor: Colors.greyDark,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    alignSelf: "center",
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+    width: "100%",
+  },
+  imageView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  cardTopContent: {
+    flexDirection: "row",
+    marginBottom: 10,
+  },
+  avatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    marginRight: 10,
   },
   title: {
-    fontSize: 32,
+    fontFamily: "italic",
+    fontSize: 18,
+  },
+  cardBottomContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "80%",
+    alignSelf: "flex-end",
+  },
+  image: {
+    width: 70,
+    height: 35,
+  },
+  subtitle: {
+    fontFamily: "italic",
+    fontSize: 18,
+  },
+  belowImagesStyle: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
   },
 });
 
-export default MyModal;
+export default ModalComponent;

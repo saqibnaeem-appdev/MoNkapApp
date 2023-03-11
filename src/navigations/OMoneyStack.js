@@ -20,6 +20,8 @@ import SendMoney from "./../screens/OMoney/SendMoney";
 import DepositMoney from "./../screens/OMoney/DepositeMoney";
 import CashOutMoneyScreen from "./../screens/OMoney/CashOutMoneyScreen";
 import OMoneyMockProfile from "./../screens/OMoney/OMoneyMockProfile";
+import SearchContact from "../screens/OMoney/SearchContact";
+import ScannerScreen from "./../screens/OMoney/ScannerScreen";
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
   return (
@@ -330,6 +332,64 @@ const MainStack = ({ navigation }) => {
           },
         }}
         component={OMoneyMockProfile}
+      />
+      <Stack.Screen
+        name="SearchContact"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "Search Contact",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={SearchContact}
+      />
+      <Stack.Screen
+        name="ScannerScreen"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Colors.OMoneySecondary,
+          },
+          title: "Deposit Money",
+          headerTitleStyle: {
+            fontSize: 22,
+            color: Colors.textColor,
+            fontWeight: "800",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => {
+            return (
+              <View style={{ marginLeft: hp("1%") }}>
+                <MaterialIcons
+                  name={"keyboard-backspace"}
+                  color={Colors.textColor}
+                  size={28}
+                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                />
+              </View>
+            );
+          },
+        }}
+        component={ScannerScreen}
       />
     </Stack.Navigator>
   );
