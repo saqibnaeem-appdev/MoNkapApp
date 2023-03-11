@@ -32,6 +32,8 @@ import RecentImage from "../components/RecentImage";
 import TextInputCom from "../components/TextInputCom";
 import MyTextInput from "../components/MyTextInput";
 import { useNavigation } from "@react-navigation/native";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 const TransferMoney = () => {
   const [value, setValue] = useState();
@@ -43,6 +45,15 @@ const TransferMoney = () => {
   useEffect(() => {
     setRecipient("Momo");
   }, []);
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <>
@@ -58,7 +69,7 @@ const TransferMoney = () => {
             { marginTop: 10, justifyContent: "center", alignItems: "center" },
           ]}
         >
-          <Text>Recipient</Text>
+          <Text style={{fontSize:14,fontWeight:'400',lineHeight:21, fontFamily:'Gentium-Basic'}}>Recipient</Text>
           <View style={{ width: wp("90%"), flexDirection: "row" }}>
             <TouchableOpacity
               onPress={() => setRecipient("MonKap")}
@@ -74,7 +85,7 @@ const TransferMoney = () => {
                 style={{ width: wp("17%"), height: hp("5%") }}
                 source={require("../../assets/fontistogooglewal.png")}
               />
-              <Text style={{ fontSize: 12, marginTop: 2 }}>MoNkap User</Text>
+              <Text style={{ color: recipient == "MonKap" ? '#0000EE' : '#00000080', fontSize:recipient == "MonKap" ? 16:  12, fontWeight:'400',lineHeight:18, marginTop: 2 ,fontFamily:'Gentium-Basic',textAlign:'center'}}>MoNkap</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setRecipient("Momo")}
@@ -94,7 +105,7 @@ const TransferMoney = () => {
                 }}
                 source={require("../../assets/momo.png")}
               />
-              <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+              <Text style={{  textAlign: "center",color: recipient == "Momo" ? '#0000EE' : '#00000080', fontSize:recipient == "Momo" ? 16 :  12, fontWeight:'400',lineHeight:18, marginTop: 2 ,fontFamily:'Gentium-Basic' }}>
                 MoMo
               </Text>
             </TouchableOpacity>
@@ -116,7 +127,7 @@ const TransferMoney = () => {
                 }}
                 source={require("../../assets/image-1.png")}
               />
-              <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+              <Text style={{ textAlign: "center",color: recipient == "OMoney" ? '#0000EE' : '#00000080', fontSize:recipient == "OMoney" ? 16:  12, fontWeight:'400',lineHeight:18, marginTop: 2 ,fontFamily:'Gentium-Basic' ,  textAlign: "center" }}>
                 OMoney
               </Text>
             </TouchableOpacity>
@@ -127,7 +138,7 @@ const TransferMoney = () => {
                 borderBottomColor: "blue",
                 padding: 5,
                 marginHorizontal: 2,
-                width: wp("22%"),
+                width: wp("19%"),
               }}
             >
               <Image
@@ -138,7 +149,7 @@ const TransferMoney = () => {
                 }}
                 source={require("../../assets/group-239.png")}
               />
-              <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+              <Text style={{ textAlign: "center",color: recipient == "Others" ? '#0000EE' : '#00000080', fontSize: recipient == "Others" ? 16: 12, fontWeight:'400',lineHeight:18, marginTop: 2 ,fontFamily:'Gentium-Basic' , textAlign: "center" }}>
                 Others
               </Text>
             </TouchableOpacity>
@@ -156,7 +167,7 @@ const TransferMoney = () => {
               >
                 <Text>Frequent Cash Out Points</Text>
                 <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                  <Text>Show Recent</Text>
+                  <Text style={{fontSize:14,borderBottomWidth:1, fontFamily:'Gentium-Basic-Bold' ,fontStyle:'italic' }}>Show Recent</Text>
                 </TouchableOpacity>
               </View>
               <View

@@ -26,8 +26,22 @@ import {
 } from "react-native-responsive-screen";
 import Colors from "../../assets/theme/Colors";
 import DividerCompo from "./DividerCompo";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 const HomeList = ({url,text,onPress}) => {
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+    "PopLight300": require("../../assets/fonts/Poppins_regular.ttf"),
+    "Poppins": require("../../assets/fonts/Poppins.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <View style={styles.HomeListParent}>
       <View style={styles.HomeListChild}>
@@ -78,7 +92,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 17,
     color: Colors.white,
-    fontWeight: "bold",
-    marginHorizontal:10
+    fontWeight: "500",
+    marginHorizontal:10,
+    fontFamily:'Poppins',
   },
 });

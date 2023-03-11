@@ -28,8 +28,19 @@ import Colors from "../../assets/theme/Colors";
 import HomeList from "../components/HomeList";
 import TotalBalanceInput from "../components/TotalBalanceInput";
 import TargetSaving from "./TargetSaving";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 const HomeScreen = ({ navigation }) => {
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
 
   return (
@@ -37,7 +48,7 @@ const HomeScreen = ({ navigation }) => {
       <HeaderHome navigation={navigation} />
 
      
-     <TotalBalanceInput text={"Your balance"}/>
+     <TotalBalanceInput text={"Total Balance"}/>
       <View style={styles.MoneyTransferArea}>
         <MyImage
         onPress={()=>navigation.navigate('TransferMoney')}
@@ -117,7 +128,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 17,
     color: Colors.white,
-    fontWeight: "bold",
-    marginHorizontal:10
+    fontWeight: "500",
+    marginHorizontal:10,
+    fontFamily:'Poppins'
   },
 });

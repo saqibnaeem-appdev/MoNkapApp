@@ -12,10 +12,20 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
+  import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 
 
 const HeaderHome = () => {
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   const navigation = useNavigation();
   return (
     <>
@@ -29,7 +39,7 @@ const HeaderHome = () => {
       <View style={styles.header}>
         <View>
           <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-            <Text style={{ fontWeight: "700", fontSize: 22, lineHeight: 30 }}>
+            <Text style={{ fontWeight: "600", fontSize: 20, lineHeight: 30, fontFamily:'Gentium-Basic-Bold' }}>
               eWallet
             </Text>
           </TouchableOpacity>

@@ -52,7 +52,7 @@ const PayMoney = () => {
 
   return (
     <>
-      <HeaderCom text={"Pay Money"} onPress={() => navigation.goBack()} />
+      <HeaderCom text={"Pay Money"} onPress={() => navigation.goBack()}   />
       {/* <ScrollView> */}
       <View style={styles.TotalBalanceInput}>
         <TotalBalanceInput text={"Total Balance"} />
