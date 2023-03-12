@@ -66,7 +66,7 @@ export default HomeList;
 const styles = StyleSheet.create({
   HomeListParent: {
     width: wp("90%"),
-    padding:3,
+    paddingHorizontal:5,
     // height: hp("12%"),
     // backgroundColor: "red",
     alignSelf: "center",

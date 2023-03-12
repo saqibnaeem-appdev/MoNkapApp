@@ -25,6 +25,9 @@ import {
 import HeaderCom from "../components/HeaderCom";
 import { useNavigation } from "@react-navigation/native";
 import * as Progress from "react-native-progress";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+
 // import Pie from "react-native-pie";
 // import { GLView } from "expo-gl";
 // import { Surface } from "expo-graphics";
@@ -33,12 +36,6 @@ import * as Progress from "react-native-progress";
 
 const images = [
   { id: 1, name: "house", source: require("../../assets/group45.png") },
-  // { id: 2, name: "shoes", source: require("../../assets/shoesvgrepocom.png") },
-  // { id: 3, name: "wedding", source: require("../../assets/xmlid-241.png") },
-  // { id: 4, name: "bible", source: require("../../assets/vector27.png") },
-  // { id: 5, name: "car", source: require("../../assets/vector26.png") },
-  // { id: 6, name: "shirt", source: require("../../assets/vector28.png") },
-  // { id: 7, name: "land", source: require("../../assets/plotsvgrepocom.png") },
 ];
 
 //
@@ -68,19 +65,66 @@ const MyTargetSaving = () => {
     </View>
   );
 
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <>
       <HeaderCom
         onPress={() => navigation.goBack()}
-        text={"MoNKap Has Your Back"}
+        text={"My Target Savings"}
       />
 
       <View style={styles.topPara}>
         <View style={{ width: wp("40%"), flexDirection: "row" }}>
-          <Text style={{ color: "white" }}>welcome,</Text>
-          <Text style={{ fontWeight: "700", color: "white" }}>Kalson</Text>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 16,
+              fontWeight: "400",
+              lineHeight: 18,
+              fontStyle: "italic",
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",
+            }}
+          >
+            welcome,
+          </Text>
+          <Text
+            style={{
+              fontWeight: "700",
+              color: "white",
+              fontSize: 16,
+              // fontWeight: "400",
+              lineHeight: 18,
+              fontStyle: "italic",
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",
+            }}
+          >
+            Kalson
+          </Text>
         </View>
-        <Text style={{ width: wp("40%"), color: "white", fontStyle: "italic" }}>
+        <Text
+          style={{
+            width: wp("40%"),
+            color: "white",
+            fontSize: 12,
+            fontWeight: "700",
+            lineHeight: 13,
+            fontStyle: "italic",
+            // marginTop: 2,
+            // textAlign: "center",
+            fontFamily: "Gentium-Basic",
+          }}
+        >
           "Don't judge each day by the harvest you reap but by seeds that you
           plant "
         </Text>
@@ -93,8 +137,32 @@ const MyTargetSaving = () => {
         }}
       >
         <View style={{ width: wp("90%"), paddingHorizontal: 10 }}>
-          <Text style={{ color: "gray" }}>Total saved toward target</Text>
-          <Text style={{ fontWeight: "500", fontSize: 18, color: "white" }}>
+          <Text
+            style={{
+              color: "gray",
+              fontSize: 14,
+              fontWeight: "700",
+              lineHeight: 16,
+              fontStyle: "italic",
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",
+            }}
+          >
+            Total saved toward target
+          </Text>
+          <Text
+            style={{
+              fontSize: 24,
+              fontWeight: "700",
+              lineHeight: 27,
+              // fontStyle:'italic',
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              color: "white",
+            }}
+          >
             XAF 23 500
           </Text>
         </View>
@@ -131,7 +199,19 @@ const MyTargetSaving = () => {
               source={require("../../assets/shoeladies-1.png")}
               style={{ width: 15, height: 15 }}
             />
-            <Text style={{ alignSelf: "center", marginLeft: 10 }}>
+            <Text
+              style={{
+                alignSelf: "center",
+                marginLeft: 10,
+                fontSize: 12,
+                fontWeight: "400",
+                lineHeight: 13.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
               Buy a shoe
             </Text>
             <View></View>
@@ -145,8 +225,32 @@ const MyTargetSaving = () => {
               marginTop: hp("5%"),
             }}
           >
-            <Text style={{ fontSize: 12 }}>Saved</Text>
-            <Text style={{ fontSize: 12 }}>Due Date</Text>
+            <Text
+              style={{
+                fontSize: 12,
+                fontWeight: "400",
+                lineHeight: 13.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
+              Saved
+            </Text>
+            <Text
+              style={{
+                fontSize: 12,
+                fontWeight: "400",
+                lineHeight: 13.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
+              Due Date
+            </Text>
           </View>
           <View
             style={{
@@ -155,8 +259,33 @@ const MyTargetSaving = () => {
               paddingHorizontal: 5,
             }}
           >
-            <Text style={{ color: "blue", fontSize: 12 }}>XAF 19 500</Text>
-            <Text style={{ fontSize: 12 }}>28th oct 23</Text>
+            <Text
+              style={{
+                color: "blue",
+                fontSize: 13,
+                fontWeight: "400",
+                lineHeight: 15.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
+              XAF 19 500
+            </Text>
+            <Text
+              style={{
+                fontSize: 12,
+                fontWeight: "400",
+                lineHeight: 13.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
+              28th oct 23
+            </Text>
           </View>
         </View>
 
@@ -186,7 +315,19 @@ const MyTargetSaving = () => {
                 source={require("../../assets/shoeladies-1.png")}
                 style={{ width: 15, height: 15 }}
               />
-              <Text style={{ alignSelf: "center", marginLeft: 10 }}>
+              <Text
+                style={{
+                  alignSelf: "center",
+                  marginLeft: 10,
+                  fontSize: 12,
+                  fontWeight: "400",
+                  lineHeight: 13.8,
+                  // fontStyle:'italic',
+                  // marginTop: 2,
+                  // textAlign: "center",
+                  fontFamily: "Gentium-Basic",
+                }}
+              >
                 Buy a shoe
               </Text>
               <View></View>
@@ -200,8 +341,32 @@ const MyTargetSaving = () => {
                 marginTop: hp("5%"),
               }}
             >
-              <Text style={{ fontSize: 12 }}>Saved</Text>
-              <Text style={{ fontSize: 12 }}>Due Date</Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontWeight: "400",
+                  lineHeight: 13.8,
+                  // fontStyle:'italic',
+                  // marginTop: 2,
+                  // textAlign: "center",
+                  fontFamily: "Gentium-Basic",
+                }}
+              >
+                Saved
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontWeight: "400",
+                  lineHeight: 13.8,
+                  // fontStyle:'italic',
+                  // marginTop: 2,
+                  // textAlign: "center",
+                  fontFamily: "Gentium-Basic",
+                }}
+              >
+                Due Date
+              </Text>
             </View>
             <View
               style={{
@@ -210,14 +375,39 @@ const MyTargetSaving = () => {
                 paddingHorizontal: 5,
               }}
             >
-              <Text style={{ color: "blue", fontSize: 12 }}>XAF 23 000 00</Text>
-              <Text style={{ fontSize: 12 }}>28th oct 23</Text>
+              <Text
+                style={{
+                  color: "blue",
+                  fontSize: 13,
+                  fontWeight: "400",
+                  lineHeight: 15.8,
+                  // fontStyle:'italic',
+                  // marginTop: 2,
+                  // textAlign: "center",
+                  fontFamily: "Gentium-Basic",
+                }}
+              >
+                XAF 23 000 00
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontWeight: "400",
+                  lineHeight: 13.8,
+                  // fontStyle:'italic',
+                  // marginTop: 2,
+                  // textAlign: "center",
+                  fontFamily: "Gentium-Basic",
+                }}
+              >
+                28th oct 23
+              </Text>
             </View>
           </View>
         </View>
       </View>
       <TouchableOpacity
-      onPress={() =>navigation.navigate('MonKapHasYourBack')}
+        onPress={() => navigation.navigate("MonKapHasYourBack")}
         style={{
           width: wp("90%"),
           alignSelf: "center",
@@ -243,9 +433,23 @@ const MyTargetSaving = () => {
           >
             <Image
               source={require("../../assets/addbutton-11.png")}
-              style={{ width: 15, height: 16,marginLeft:10 }}
+              style={{ width: 15, height: 16, marginLeft: 10 }}
             />
-            <Text style={{ alignSelf: "center", marginLeft: 10 }}>Add new</Text>
+            <Text
+              style={{
+                alignSelf: "center",
+                marginLeft: 10,
+                fontSize: 12,
+                fontWeight: "400",
+                lineHeight: 13.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
+              Add new
+            </Text>
             <View></View>
           </View>
 
@@ -259,21 +463,62 @@ const MyTargetSaving = () => {
               alignItems: "center",
             }}
           >
-            <Text style={{ color: "blue", fontSize: 12 }}>Start a New </Text>
-            <Text style={{ color: "blue", fontSize: 12 }}>TargetSaving</Text>
+            <Text
+              style={{
+                color: "blue",
+                fontSize: 12,
+                fontWeight: "400",
+                lineHeight: 13.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
+              Start a New{" "}
+            </Text>
+            <Text
+              style={{
+                color: "blue",
+                fontSize: 12,
+                fontWeight: "400",
+                lineHeight: 13.8,
+                // fontStyle:'italic',
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
+              TargetSaving
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
 
       {/* <View style={styles.TotalBalance}> */}
-        <View style={[styles.deposit,{width:wp('90%'), marginTop:hp('13%')} ]}>
-         <View style={{flexDirection:'row',justifyContent:'space-between',width:wp('89%'),marginVertical:10}}>
-         <Text
+      <View
+        style={[styles.deposit, { width: wp("90%"), marginTop: hp("13%") }]}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: wp("89%"),
+            marginVertical: 10,
+          }}
+        >
+          <Text
             style={{
               textAlign: "center",
               color: "white",
-              fontWeight: "bold",
-              marginLeft:10
+              fontSize: 14,
+              fontWeight: "700",
+              lineHeight: 16.8,
+              // fontStyle:'italic',
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              marginLeft: 10,
             }}
           >
             Internet on Target Savings
@@ -282,25 +527,37 @@ const MyTargetSaving = () => {
             style={{
               textAlign: "center",
               color: "white",
-              fontWeight: "bold",
-              marginRight:10
+              fontSize: 16,
+              fontWeight: "700",
+              lineHeight: 18.8,
+              // fontStyle:'italic',
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              marginRight: 10,
             }}
           >
             XAF 1500
           </Text>
-         </View>
-          <Text
-            style={{
-              marginVertical:10,
-              textAlign: "center",
-              color: "white",
-              fontWeight: "bold",
-            }}
-          >
-           Your Savings are now earning  an Interest of 3%
-          </Text>
         </View>
-        {/* <View style={[styles.deposit, {flexDirection:'row',justifyContent:'space-between',width:wp('90%')}]}>
+        <Text
+          style={{
+            marginVertical: 10,
+            textAlign: "center",
+            color: "white",
+            fontSize: 13,
+            // fontWeight: "700",
+            lineHeight: 15.8,
+            fontStyle: "italic",
+            // marginTop: 2,
+            // textAlign: "center",
+            fontFamily: "Gentium-Basic",
+          }}
+        >
+          Your Savings are now earning an Interest of 3%
+        </Text>
+      </View>
+      {/* <View style={[styles.deposit, {flexDirection:'row',justifyContent:'space-between',width:wp('90%')}]}>
           <Text
             style={{
               textAlign: "center",

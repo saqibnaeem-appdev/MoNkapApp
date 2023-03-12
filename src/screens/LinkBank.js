@@ -29,10 +29,23 @@ import { useNavigation } from "@react-navigation/native";
 import MyTextInput from "../components/MyTextInput";
 import ButtonCom from "../components/ButtonCom";
 
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+
+
 const LinkBank = () => {
   const [value, setValue] = useState();
 
   const navigation = useNavigation()
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>

@@ -48,7 +48,7 @@ import {
       <>
         <HeaderCom text={"Deposit Money"} onPress={() => navigation.goBack()} />
         <ScrollView>
-          <View style={styles.TotalBalanceInput}>
+          <View style={[styles.TotalBalanceInput,{marginTop:10}]}>
             <TotalBalanceInput text={"Total Balance"} />
           </View>
   
@@ -58,7 +58,7 @@ import {
               { marginTop: 10, justifyContent: "center", alignItems: "center" },
             ]}
           >
-            <Text>Deposit Form</Text>
+            <Text style={{fontSize:14,fontWeight:'400',lineHeight:21, fontFamily:'Gentium-Basic'}}>Deposit Form</Text>
             <View style={{ width: wp("90%"), flexDirection: "row" ,justifyContent:'space-between'}}>
              
               <TouchableOpacity
@@ -79,7 +79,7 @@ import {
                   }}
                   source={require("../../assets/momo.png")}
                 />
-                <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+                <Text style={{ color: recipient == "Momo" ? '#0000EE' : '#00000080', fontSize:recipient == "MonKap" ? 16:  16, fontWeight:'400',lineHeight:18, marginTop: 2 ,fontFamily:'Gentium-Basic',textAlign:'center'}}>
                   MoMo
                 </Text>
               </TouchableOpacity>
@@ -101,7 +101,7 @@ import {
                   }}
                   source={require("../../assets/image-1.png")}
                 />
-                <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+                <Text style={{ color: recipient == "OMoney" ? '#0000EE' : '#00000080', fontSize:recipient == "OMoney" ? 16:  16, fontWeight:'400',lineHeight:18, marginTop: 2 ,fontFamily:'Gentium-Basic',textAlign:'center'}}>
                   OMoney
                 </Text>
               </TouchableOpacity>
@@ -123,7 +123,7 @@ import {
                   }}
                   source={require("../../assets/group-239.png")}
                 />
-                <Text style={{ fontSize: 12, marginTop: 2, textAlign: "center" }}>
+                <Text style={{ color: recipient == "Others" ? '#0000EE' : '#00000080', fontSize:recipient == "Others" ? 16:  16, fontWeight:'400',lineHeight:18, marginTop: 2 ,fontFamily:'Gentium-Basic',textAlign:'center'}}>
                   Others
                 </Text>
               </TouchableOpacity>

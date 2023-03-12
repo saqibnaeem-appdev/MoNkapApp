@@ -59,7 +59,7 @@ const TransferMoney = () => {
     <>
       <HeaderCom text={"Transfer Money"} onPress={() => navigation.goBack()} />
       <ScrollView>
-        <View style={styles.TotalBalanceInput}>
+        <View style={[styles.TotalBalanceInput,{marginTop:10}]}>
           <TotalBalanceInput text={"Total Balance"} />
         </View>
 
@@ -165,9 +165,9 @@ const TransferMoney = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Text>Frequent Cash Out Points</Text>
+                 <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,letterSpacing:2.5}}>Frequent Cash Out Points</Text>
                 <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                  <Text style={{fontSize:14,borderBottomWidth:1, fontFamily:'Gentium-Basic-Bold' ,fontStyle:'italic' }}>Show Recent</Text>
+                  <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,fontStyle:'italic',borderBottomWidth:1}}>Show Recent</Text>
                 </TouchableOpacity>
               </View>
               <View
@@ -273,9 +273,9 @@ const TransferMoney = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Text>Frequent Cash Out Points</Text>
+                 <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,letterSpacing:2.5}}>Frequent Cash Out Points</Text>
                 <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                  <Text>Show Recent</Text>
+                  <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,fontStyle:'italic',borderBottomWidth:1}}>Show Recent</Text>
                 </TouchableOpacity>
               </View>
               <View
@@ -381,9 +381,9 @@ const TransferMoney = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Text>Frequent Cash Out Points</Text>
+                <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,letterSpacing:2.5}}>Frequent Cash Out Points</Text>
                 <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                  <Text>Show Recent</Text>
+                  <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,fontStyle:'italic',borderBottomWidth:1}}>Show Recent</Text>
                 </TouchableOpacity>
               </View>
               <View
@@ -489,9 +489,9 @@ const TransferMoney = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Text>Frequent Cash Out Points</Text>
+                <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,letterSpacing:2.5}}>Frequent Cash Out Points</Text>
                 <TouchableOpacity onPress={() => setShowRecent(!showRecent)}>
-                  <Text>Show Recent</Text>
+                  <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,fontStyle:'italic',borderBottomWidth:1}}>Show Recent</Text>
                 </TouchableOpacity>
               </View>
               <View
@@ -659,5 +659,5 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 
-  sendToImage: { width: wp("10%"), height: hp("6%") },
+  sendToImage: { width: wp("10%"), height: hp("5.5%"),marginTop:1 },
 });

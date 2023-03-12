@@ -35,6 +35,13 @@ import TextInputCom from "../components/TextInputCom";
 import MyTextInput from "../components/MyTextInput";
 import { useNavigation } from "@react-navigation/native";
 import EnEOList from "../components/EnEOList";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+
+
+
+
+
 
 const data = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
 
@@ -46,15 +53,77 @@ const PayMoney = () => {
 
   const navigation = useNavigation();
 
+  const MyTextInput = ({ text, placeholder, width, borderColor,shadow }) => {
+    const [value, setValue] = useState();
+    return (
+      <View >
+        <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,letterSpacing:2.5}}>{text}</Text>
+        <TextInput
+        
+          style={[
+            {
+              width: width ? wp("80%") : wp("65%"),
+              borderWidth: 1,
+  
+              height: hp("5%"),
+              borderRadius: 5,
+              paddingHorizontal: 10,
+              // backgroundColor:'green',
+              
+              
+              
+            },
+            {},
+            {
+              borderColor: borderColor
+                ? Colors.OMoneySecondary
+                : 'lightgray',
+            },
+          ]}
+          placeholder={placeholder}
+          keyboardType={"default"}
+          //   placeholderTextColor={}
+          //   secureTextEntry={secureTextEntry}
+          //   editable={editable}
+          //   selectTextOnFocus={selectTextOnFocus}
+          //   style={[
+          //     styles.textInput,
+          //     { height: height ? height : hp("7%") },
+          //     {
+          //       backgroundColor: backgroundColor ? backgroundColor : Colors.white,
+          //     },
+          //     { borderWidth: borderWidth ? borderWidth : null },
+          //     { borderRadius: borderRadius ? borderRadius : 5 },
+          //   ]}
+          value={value}
+          onChangeText={() => setValue(value)}
+          //   textAlignVertical={textAlignVertical}
+        />
+      </View>
+    );
+  };
+
+
   useEffect(() => {
     setRecipient("Momo");
   }, []);
+
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
 
   return (
     <>
       <HeaderCom text={"Pay Money"} onPress={() => navigation.goBack()}   />
       {/* <ScrollView> */}
-      <View style={styles.TotalBalanceInput}>
+      <View style={[styles.TotalBalanceInput,{marginTop:10}]}>
         <TotalBalanceInput text={"Total Balance"} />
       </View>
 
@@ -78,15 +147,18 @@ const PayMoney = () => {
               borderBottomColor: "blue",
               padding: 5,
               marginHorizontal: 2,
-              width: wp("45%"),
+              width: wp("44%"),
             }}
           >
             <Text
               style={{
                 fontSize: 15,
-                fontWeight: "500",
+                // fontWeight: "700",
+                lineHeight:21,
                 marginTop: 2,
                 textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,
                 color: recipient == "Momo" ? "white" : "black",
               }}
             >
@@ -108,8 +180,12 @@ const PayMoney = () => {
             <Text
               style={{
                 fontSize: 15,
-                fontWeight: "500",
+                // fontWeight: "700",
+                lineHeight:21,
                 marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,
                 textAlign: "center",
                 color: recipient == "Others" ? "white" : "black",
               }}
@@ -125,18 +201,42 @@ const PayMoney = () => {
           <View style={styles.utilitiesButtonParent}>
             <View style={styles.utilitiesButton}>
               <TouchableOpacity onPress={() => setList("ENEO")}>
-                <Text>ENEO</Text>
+                <Text style={{ fontSize: 15,
+                // fontWeight: "700",
+                lineHeight:21,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,}}>ENEO</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => setList("CAMWATER")}>
-                <Text>CAMWATER</Text>
+                <Text style={{ fontSize: 15,
+                // fontWeight: "700",
+                lineHeight:21,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,}}>CAMWATER</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.utilitiesButton}>
               <TouchableOpacity onPress={() => setList("Phone")}>
-                <Text>Phone & Internet</Text>
+                <Text style={{ fontSize: 15,
+                // fontWeight: "700",
+                lineHeight:21,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,}}>Phone & Internet</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => setList("Cable")}>
-                <Text>Cable & TV</Text>
+                <Text style={{ fontSize: 15,
+                // fontWeight: "700",
+                lineHeight:21,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,}}>Cable & TV</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -150,10 +250,16 @@ const PayMoney = () => {
                 size={30}
               />
             </TouchableOpacity>
-            <MyTextInput placeholder={"Search Angency"} />
+            <MyTextInput shadow placeholder={"Search Angency"} />
             <TouchableOpacity style={[styles.AmountBtn]}>
               <View style={styles.SXFView}>
-                <Text>Get All</Text>
+                <Text style={{ fontSize: 13,
+                fontWeight: "400",
+                lineHeight:18,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,}}>Get All</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -161,7 +267,12 @@ const PayMoney = () => {
           {list == "ENEO" && (
             <ScrollView>
               <View style={styles.ENEOBill}>
-                <Text>ENEO BILL PAYOUT</Text>
+                <Text style={{ fontSize: 13,
+                fontWeight: "400",
+                lineHeight:18,
+                marginTop: 2,
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,}}>ENEO BILL PAYOUT</Text>
               </View>
 
               <View style={{ marginTop: 5 }}>
@@ -232,21 +343,21 @@ const styles = StyleSheet.create({
   },
   AmountBtn: {
     marginTop: hp("10%"),
-    marginLeft: wp("67%"),
+    marginLeft: wp("66.7%"),
     position: "absolute",
   },
   SXFView: {
     width: wp("23%"),
-    height: hp("5%"),
+    height: hp("4.8%"),
     backgroundColor: "#D9D9D9",
 
     // backgroundColor: "blue",
-    borderLeftWidth: 1,
-    borderLeftColor: "blue",
+    // borderLeftWidth: 1,
+    // borderLeftColor: "blue",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    marginTop: hp("3%"),
+    marginTop: hp("2.6%"),
   },
   SXFImage: {
     width: wp("15%"),
