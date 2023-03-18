@@ -25,6 +25,10 @@ const ButtonCom = ({ button, text, onPress }) => {
         <TouchableOpacity style={styles.yellowContainer} onPress={onPress}>
           <Text style={styles.YellowBtnTextStyle}>{text}</Text>
         </TouchableOpacity>
+      ) : button == "momo" ? (
+        <TouchableOpacity style={styles.MomoContainer} onPress={onPress}>
+          <Text style={styles.YellowBtnTextStyle}>{text}</Text>
+        </TouchableOpacity>
       ) : (
         <TouchableOpacity style={styles.container}>
           <Text style={styles.textStyle}>Next</Text>
@@ -58,6 +62,13 @@ const styles = StyleSheet.create({
   },
   yellowContainer: {
     backgroundColor: Colors.OMoneySecondary,
+    width: wp("80%"),
+    height: hp("6%"),
+    borderRadius: 10,
+    justifyContent: "center",
+  },
+  MomoContainer: {
+    backgroundColor: Colors.MomoMoneySecondry,
     width: wp("80%"),
     height: hp("6%"),
     borderRadius: 10,

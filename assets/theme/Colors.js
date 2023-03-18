@@ -7,6 +7,7 @@ export default {
   placeholder: "#BBBBBB",
   textColor: "#000000",
   OMoneySecondary: "#EA9311",
+  MomoMoneySecondry:'#FECA18',
   green: "#36B422",
   gray: "#D9D9D9",
   orange: "#FE8303",
