@@ -23,9 +23,22 @@ import {
 } from "react-native-responsive-screen";
 import HeaderCom from "../components/HeaderCom";
 import { useNavigation } from "@react-navigation/native";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 const TargetSaving = () => {
   const navigation = useNavigation()
+
+  
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <>
       <HeaderCom onPress={() => navigation.goBack()} text={"Target Saving"} />
@@ -50,11 +63,11 @@ const TargetSaving = () => {
           <Text style={styles.bluetext}>Small Projects</Text>
         </View>
         <View>
-          <Text style={styles.bluetext}>We dey with you</Text>
+          <Text style={[styles.bluetext,{marginLeft:-30}]}>We dey with you</Text>
           <Image source={require("../../assets/arrow-9.png")} />
         </View>
         <View>
-          <Image source={require("../../assets/icons8moneybox55-1.png")} />
+          <Image style={{marginLeft:10}} source={require("../../assets/icons8moneybox55-1.png")} />
           <Text style={styles.bluetext}>Big Projects</Text>
         </View>
       </View>
@@ -78,7 +91,13 @@ const TargetSaving = () => {
 
       <View style={styles.TotalBalance}>
             <TouchableOpacity onPress={() => navigation.navigate('MonKapHasYourBack')} style={styles.deposit}>
-              <Text style={{ textAlign: "center", color: "white" ,fontWeight:'bold'}}>Start a Target Savings</Text>
+              <Text style={{ textAlign: "center", color: "white" , fontSize: 20,
+                // fontWeight: "700",
+                lineHeight:23,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,}}>Start a Target Savings</Text>
             </TouchableOpacity>
           </View>
 
@@ -104,14 +123,24 @@ const styles = StyleSheet.create({
   },
   topText: {
     fontSize: 16,
-    fontWeight: "400",
+                fontWeight: "400",
+                lineHeight:18,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily:'Gentium-Basic',
+                letterSpacing:1.5,
     textAlign: "center",
-    marginVertical: hp("2%"),
+    marginTop: hp("2%"),
+    marginBottom: hp("2%"),
   },
   bluetext: {
     fontSize: 16,
     fontWeight: "400",
-    lineHeight: 18,
+    lineHeight:18,
+    marginTop: 2,
+    textAlign: "center",
+    fontFamily:'Gentium-Basic',
+    letterSpacing:1.5,
     color: "#0000EE",
   },
   TotalBalance: {

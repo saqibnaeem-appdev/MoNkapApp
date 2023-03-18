@@ -50,7 +50,7 @@ const EnEOList = () => {
           <View>
             <TouchableOpacity
               onPress={toggleModalVisibility}
-              style={{ backgroundColor: "#F2FEF1", padding: 10 }}
+              style={{ backgroundColor: "#F2FEF1", padding: 5 }}
             >
               <Text style={styles.listText}> view </Text>
             </TouchableOpacity>
@@ -61,7 +61,7 @@ const EnEOList = () => {
             <Text style={styles.listText}> </Text>
           </View>
           <View>
-            <Text style={[styles.listText, { color: "#46FF6B" }]}>Paid </Text>
+            <Text style={[styles.listText, { color: "#46FF6B" }]}>     Paid </Text>
           </View>
           <View>
             <TouchableOpacity
@@ -78,7 +78,7 @@ const EnEOList = () => {
         <View style={styles.list}>
           <View>
             <Text style={styles.listText}>Amount </Text>
-            <Text style={[styles.listText, { fontWeight: "500" }]}>
+            <Text style={[styles.listText, { fontWeight: "700" }]}>
               5 000 XAF
             </Text>
           </View>
@@ -123,7 +123,14 @@ const EnEOList = () => {
 export default EnEOList;
 
 const styles = StyleSheet.create({
-  listText: { fontSize: 12, lineHeight: 16 },
+  listText: {fontSize: 13,
+    fontWeight: "400",
+    lineHeight:18,
+    marginTop: 2,
+    fontStyle:'italic',
+    fontFamily:'Gentium-Basic',
+    letterSpacing:1.5, },
+  
   listParent: {
     width: wp("90%"),
     alignSelf: "center",

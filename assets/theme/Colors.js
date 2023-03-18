@@ -19,7 +19,7 @@ export default {
   gray: "#DCDCDC",
   fadedgray: "#CFCDCB",
   lightgray: "#F1F2F6",
-  // blue: "#7DC4FF",
+  blue1: "#7DC4FF",
   blue: "#0000EE",
   lightblack: "#000000B2",
   red: "#FF0000",

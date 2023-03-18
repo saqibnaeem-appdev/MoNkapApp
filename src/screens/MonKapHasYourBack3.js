@@ -27,6 +27,9 @@ import {
 import HeaderCom from "../components/HeaderCom";
 import { useNavigation } from "@react-navigation/native";
 import MyTextInput from "../components/MyTextInput";
+import Colors from "../../assets/theme/Colors";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 const images = [
   { id: 1, name: "House", source: require("../../assets/group45.png") },
@@ -57,6 +60,16 @@ const MonKapHasYourBack3 = () => {
     </View>
   );
 
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+
   return (
     <>
       <HeaderCom
@@ -81,10 +94,20 @@ const MonKapHasYourBack3 = () => {
       </View>
 
       <View style={[styles.TotalBalanceInput, { marginTop: 10 }]}>
-        <Text style={{ fontWeight: "500" }}>
+        <Text style={{  fontSize: 16,
+              fontWeight: "400",
+              lineHeight: 16,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic", }}>
           How Much you will save toward{" "}
         </Text>
-        <Text style={{ fontWeight: "500" }}>buying a house</Text>
+        <Text style={{  fontSize: 16,
+              fontWeight: "400",
+              lineHeight: 16,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic", }}>buying a house</Text>
         <View style={{ width: wp("80%"), marginTop: 10, marginBottom: 10 }}>
           <MyTextInput
             text={"Amount"}
@@ -113,7 +136,12 @@ const MonKapHasYourBack3 = () => {
             paddingBottom: 5,
           }}
         >
-          <Text style={{ marginVertical: 5, fontWeight: "500" }}>
+          <Text style={{ marginVertical: 5,  fontSize: 16,
+              fontWeight: "400",
+              lineHeight: 16,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",}}>
             Select a payment method to make saving{" "}
           </Text>
           <View
@@ -224,8 +252,18 @@ const MonKapHasYourBack3 = () => {
                   marginTop: 10,
                 }}
               >
-                <Text style={{ textAlign: "center" }}>
-                  You are about to make a payment of 18,000 XAF From MoMo to
+                <Text style={{ textAlign: "center" , fontSize: 16,
+              fontWeight: "400",
+              lineHeight: 16,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic", fontSize: 16,
+              fontWeight: "400",
+              lineHeight: 16,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",}}>
+                  You are about to make a payment of <Text style={{color:'blue'}}>18,000 XAF</Text> From MoMo to
                   your Target Saving
                 </Text>
               </View>
@@ -237,7 +275,12 @@ const MonKapHasYourBack3 = () => {
                   marginTop: 10,
                 }}
               >
-                <Text style={{ textAlign: "center" }}>
+                <Text style={{ textAlign: "center", fontSize: 16,
+              fontWeight: "400",
+              lineHeight: 16,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic", }}>
                   Please input your secret pincode to confirm this transaction.
                   Note, this transaction cannot be cancelled after this
                 </Text>
@@ -410,7 +453,14 @@ const MonKapHasYourBack3 = () => {
             style={{
               textAlign: "center",
               color: "white",
-              fontWeight: "bold",
+              // fontWeight: "bold",
+              fontSize: 20,
+              // fontWeight: "700",
+              lineHeight: 23,
+              marginTop: 2,
+              textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              letterSpacing: 1.5,
             }}
           >
             NEXT

@@ -12,7 +12,7 @@ const MyTextInput = ({ text, placeholder, width, borderColor }) => {
   const [value, setValue] = useState();
   return (
     <View>
-      <Text style={{ fontSize: 16, fontWeight: "400" }}>{text}</Text>
+      <Text style={{fontSize:14,fontWeight:'400',lineHeight:20, fontFamily:'Gentium-Basic',color:Colors.black ,letterSpacing:2.5}}>{text}</Text>
       <TextInput
         style={[
           {
@@ -27,7 +27,7 @@ const MyTextInput = ({ text, placeholder, width, borderColor }) => {
           {
             borderColor: borderColor
               ? Colors.OMoneySecondary
-              : Colors.secondary,
+              : Colors.blue1,
           },
         ]}
         placeholder={placeholder}

@@ -30,8 +30,9 @@ import { useNavigation } from "@react-navigation/native";
 // import MyTextInput from "../components/MyTextInput";
 import { Calendar, CalendarList, Agenda } from "react-native-calendars";
 
-
-
+import Colors from "../../assets/theme/Colors";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 const images = [
   { id: 1, name: "house", source: require("../../assets/group45.png") },
@@ -46,16 +47,34 @@ const images = [
 const MyTextInput = ({ text, placeholder, width }) => {
   const [value, setValue] = useState();
 
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <View>
-      <Text style={{ fontSize: 16, fontWeight: "400", marginBottom: 5 }}>
+      <Text
+        style={{
+          fontSize: 15,
+          fontWeight: "400",
+          lineHeight: 23,
+          fontFamily: "Gentium-Basic",
+          color: Colors.black,
+          letterSpacing: 2.5,
+        }}
+      >
         {text}
       </Text>
       <TextInput
         style={{
           width: width ? wp("80%") : wp("90%"),
           borderWidth: 1,
-          borderColor: "blue",
+          borderColor: Colors.blue1,
           height: hp("5%"),
           borderRadius: 5,
           paddingHorizontal: 50,
@@ -73,14 +92,24 @@ const MyTextInput2 = ({ text, placeholder, width }) => {
   const [value, setValue] = useState();
   return (
     <View>
-      <Text style={{ fontSize: 16, fontWeight: "400", marginBottom: 5 }}>
+      <Text
+        style={{
+          fontSize: 15,
+          fontWeight: "400",
+          lineHeight: 23,
+          fontFamily: "Gentium-Basic",
+          color: Colors.black,
+          letterSpacing: 2.5,
+          marginBottom: 5,
+        }}
+      >
         {text}
       </Text>
       <TextInput
         style={{
           width: width ? wp("80%") : wp("90%"),
           borderWidth: 1,
-          borderColor: "blue",
+          borderColor: Colors.blue1,
           height: hp("5%"),
           borderRadius: 5,
           paddingHorizontal: 90,
@@ -98,14 +127,24 @@ const MyTextInput3 = ({ text, placeholder, width }) => {
   const [value, setValue] = useState();
   return (
     <View>
-      <Text style={{ fontSize: 16, fontWeight: "400", marginBottom: 5 }}>
+      <Text
+        style={{
+          fontSize: 15,
+          fontWeight: "400",
+          lineHeight: 23,
+          fontFamily: "Gentium-Basic",
+          color: Colors.black,
+          letterSpacing: 2.5,
+          marginBottom: 5,
+        }}
+      >
         {text}
       </Text>
       <TextInput
         style={{
           width: width ? wp("80%") : wp("90%"),
           borderWidth: 1,
-          borderColor: "blue",
+          borderColor: Colors.blue1,
           height: hp("5%"),
           borderRadius: 5,
           paddingHorizontal: 10,
@@ -146,11 +185,31 @@ const MonKapHasYourBack = () => {
     >
       <Image
         source={item.source}
-        style={{ width: 30, height: 30, marginRight: 10 }}
+        style={{ width: 30, height: 30, marginRight: 20 }}
       />
-      <Text>{item.name}</Text>
+      <Text
+        style={{
+          fontSize: 8,
+          fontWeight: "400",
+          lineHeight: 12,
+          marginRight: 15,
+          // textAlign: "center",
+          fontFamily: "Gentium-Basic",
+        }}
+      >
+        {item.name}
+      </Text>
     </View>
   );
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <>
@@ -159,7 +218,20 @@ const MonKapHasYourBack = () => {
         text={"MoNKap Has Your Back"}
       />
       <View style={styles.topPara}>
-        <Text style={[styles.topText, { fontSize: 20, fontWeight: "700" }]}>
+        <Text
+          style={[
+            styles.topText,
+            {
+              fontSize: 20,
+              fontWeight: "700",
+              lineHeight: 23,
+              // marginTop: 2,
+              textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              letterSpacing: 1.5,
+            },
+          ]}
+        >
           What are you saving for ?
         </Text>
       </View>
@@ -196,7 +268,7 @@ const MonKapHasYourBack = () => {
                   textAlign: "center",
                 }}
               >
-                XSF
+                XAF
               </Text>
               {/* <Image
                 style={styles.SXFImage}
@@ -211,7 +283,7 @@ const MonKapHasYourBack = () => {
             placeholder={"Enter Amount to Send"}
           />
           <TouchableOpacity
-           onPress={toggleModalVisibility}
+            onPress={toggleModalVisibility}
             style={styles.AmountBtnCalendar}
           >
             <View style={styles.SXFViewCalendar}>
@@ -232,7 +304,6 @@ const MonKapHasYourBack = () => {
           </TouchableOpacity>
         </View>
       </View>
-      
 
       <Modal
         visible={isModalVisible}
@@ -250,45 +321,6 @@ const MonKapHasYourBack = () => {
       {selectedDate !== "" && (
         <Text style={styles.selectedDate}>{selectedDate}</Text>
       )}
-      {/* <View
-          style={[
-            styles.topPara,
-            {
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            },
-          ]}
-        >
-          <View>
-            <Image source={require("../../assets/icons8moneybox64-1.png")} />
-            <Text style={styles.bluetext}>Small Projects</Text>
-          </View>
-          <View>
-            <Text style={styles.bluetext}>We dey with you</Text>
-            <Image source={require("../../assets/arrow-9.png")} />
-          </View>
-          <View>
-            <Image source={require("../../assets/icons8moneybox55-1.png")} />
-            <Text style={styles.bluetext}>Big Projects</Text>
-          </View>
-        </View> */}
-
-      {/* <View style={styles.topPara2}>
-          <Text style={styles.topText}>
-            Enjoy the best and reliable saving by securing your money for the
-            future
-          </Text>
-        </View>
-  
-        <View style={styles.topPara3}>
-          <Text style={styles.topText}>
-            Wether you are planning to buy a phone, a plot, build a house ,
-            prepare for your kids back to school, plan for a trip........ MoNkap
-            is a patner you can rely on.
-          </Text>
-        </View>
-   */}
 
       <View style={styles.TotalBalance}>
         <TouchableOpacity
@@ -296,7 +328,17 @@ const MonKapHasYourBack = () => {
           style={styles.deposit}
         >
           <Text
-            style={{ textAlign: "center", color: "white", fontWeight: "bold" }}
+            style={{
+              textAlign: "center",
+              color: "white",
+              fontSize: 20,
+              // fontWeight: "700",
+              lineHeight: 23,
+              marginTop: 2,
+              textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              letterSpacing: 1.5,
+            }}
           >
             Continue
           </Text>
@@ -313,7 +355,7 @@ const styles = StyleSheet.create({
     marginTop: hp("1"),
     fontSize: hp("2"),
     fontWeight: "bold",
-    color: 'blue',
+    color: "blue",
   },
   calendarContainer: {
     backgroundColor: "#fff",
@@ -427,7 +469,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
     width: wp("23%"),
-    height: hp("5%"),
+    height: hp("4.9%"),
     backgroundColor: "blue",
     alignItems: "center",
     justifyContent: "center",

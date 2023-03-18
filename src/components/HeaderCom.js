@@ -13,7 +13,7 @@ import useCustomFonts from "../../assets/fonts/useCustomFonts";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../assets/theme/Colors";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
-const HeaderCom = ({ text, onPressRight, onPressLeft ,onPress}) => {
+const HeaderCom = ({ text, onPressRight, onPressLeft ,onPress,icon}) => {
   // const navigation = useNavigation();
 
   return (
@@ -27,13 +27,14 @@ const HeaderCom = ({ text, onPressRight, onPressLeft ,onPress}) => {
             onPress={onPress}
           />
           <Text style={styles.textStyle}>{text}</Text>
-          <AntDesign
+          {icon ?  <AntDesign
             name="questioncircle"
             size={30}
             color={Colors.white}
             style={{ top: "1%" }}
             onPress={onPressRight}
-          />
+          /> : <View></View> }
+         
         </View>
       </View>
     </SafeAreaView>

@@ -25,6 +25,9 @@ import {
 import HeaderCom from "../components/HeaderCom";
 import { useNavigation } from "@react-navigation/native";
 // import MyTextInput from "../components/MyTextInput";
+import Colors from "../../assets/theme/Colors";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 const images = [
   { id: 1, name: "house", source: require("../../assets/group45.png") },
@@ -55,9 +58,29 @@ const MonKapHasYourBack2 = () => {
         source={item.source}
         style={{ width: 30, height: 30, marginRight: 3 }}
       />
-      <Text>{item.name}</Text>
+      <Text
+        style={{
+          fontSize: 8,
+          fontWeight: "400",
+          lineHeight: 12,
+          // marginRight: 15,
+          textAlign: "center",
+          fontFamily: "Gentium-Basic",
+        }}
+      >
+        {item.name}
+      </Text>
     </View>
   );
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <>
@@ -66,7 +89,19 @@ const MonKapHasYourBack2 = () => {
         text={"MoNKap Has Your Back"}
       />
       <View style={styles.topPara}>
-        <Text style={[styles.topText, { fontSize: 17, fontWeight: "600" }]}>
+        <Text
+          style={[
+            styles.topText,
+            {
+              fontSize: 16,
+              fontWeight: "700",
+              lineHeight: 23,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",
+            },
+          ]}
+        >
           How Often will you be saving towards the buying a house ?
         </Text>
       </View>
@@ -106,11 +141,31 @@ const MonKapHasYourBack2 = () => {
               alignItems: "center",
             }}
           >
-            <Text style={{ color: choosePlan == "Daily" ? "white" : "black" }}>
+            <Text
+              style={{
+                color: choosePlan == "Daily" ? "white" : "black",
+                fontSize: 16,
+                // fontWeight: "400",
+                lineHeight: 20,
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
               {" "}
               Daily
             </Text>
-            <Text style={{ color: choosePlan == "Daily" ? "white" : "black" }}>
+            <Text
+              style={{
+                color: choosePlan == "Daily" ? "white" : "black",
+                fontSize: 16,
+                // fontWeight: "400",
+                lineHeight: 20,
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic",
+              }}
+            >
               Distributions
             </Text>
           </TouchableOpacity>
@@ -125,10 +180,20 @@ const MonKapHasYourBack2 = () => {
               marginTop: hp("1%"),
             }}
           >
-            <Text style={{ color: choosePlan == "Weekly" ? "white" : "black" }}>
+            <Text style={{ color: choosePlan == "Weekly" ? "white" : "black",  fontSize: 16,
+                // fontWeight: "400",
+                lineHeight: 20,
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic", }}>
               Weekly
             </Text>
-            <Text style={{ color: choosePlan == "Weekly" ? "white" : "black" }}>
+            <Text style={{ color: choosePlan == "Weekly" ? "white" : "black",  fontSize: 16,
+                // fontWeight: "400",
+                lineHeight: 20,
+                // marginTop: 2,
+                // textAlign: "center",
+                fontFamily: "Gentium-Basic", }}>
               Savings
             </Text>
           </TouchableOpacity>
@@ -145,12 +210,22 @@ const MonKapHasYourBack2 = () => {
             }}
           >
             <Text
-              style={{ color: choosePlan == "Monthly" ? "white" : "black" }}
+              style={{ color: choosePlan == "Monthly" ? "white" : "black",  fontSize: 16,
+              // fontWeight: "400",
+              lineHeight: 20,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic", }}
             >
               Monthly
             </Text>
             <Text
-              style={{ color: choosePlan == "Monthly" ? "white" : "black" }}
+              style={{ color: choosePlan == "Monthly" ? "white" : "black",  fontSize: 16,
+              // fontWeight: "400",
+              lineHeight: 20,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic", }}
             >
               Savings
             </Text>
@@ -167,12 +242,22 @@ const MonKapHasYourBack2 = () => {
             }}
           >
             <Text
-              style={{ color: choosePlan == "Irregular" ? "white" : "black" }}
+              style={{ color: choosePlan == "Irregular" ? "white" : "black" ,  fontSize: 16,
+              // fontWeight: "400",
+              lineHeight: 20,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",}}
             >
               Irregular
             </Text>
             <Text
-              style={{ color: choosePlan == "Irregular" ? "white" : "black" }}
+              style={{ color: choosePlan == "Irregular" ? "white" : "black" ,  fontSize: 16,
+              // fontWeight: "400",
+              lineHeight: 20,
+              // marginTop: 2,
+              // textAlign: "center",
+              fontFamily: "Gentium-Basic",}}
             >
               Savings
             </Text>
@@ -180,66 +265,47 @@ const MonKapHasYourBack2 = () => {
         </View>
       </View>
 
-      {/* <View
-            style={[
-              styles.topPara,
-              {
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                alignItems: "center",
-              },
-            ]}
-          >
-            <View>
-              <Image source={require("../../assets/icons8moneybox64-1.png")} />
-              <Text style={styles.bluetext}>Small Projects</Text>
-            </View>
-            <View>
-              <Text style={styles.bluetext}>We dey with you</Text>
-              <Image source={require("../../assets/arrow-9.png")} />
-            </View>
-            <View>
-              <Image source={require("../../assets/icons8moneybox55-1.png")} />
-              <Text style={styles.bluetext}>Big Projects</Text>
-            </View>
-          </View> */}
-
-      {/* <View style={styles.topPara2}>
-            <Text style={styles.topText}>
-              Enjoy the best and reliable saving by securing your money for the
-              future
-            </Text>
-          </View>
     
-          <View style={styles.topPara3}>
-            <Text style={styles.topText}>
-              Wether you are planning to buy a phone, a plot, build a house ,
-              prepare for your kids back to school, plan for a trip........ MoNkap
-              is a patner you can rely on.
-            </Text>
-          </View>
-     */}
 
       <View style={styles.TotalBalance}>
         {choosePlan == "" ? (
-          <TouchableOpacity style={[styles.deposit,{opacity:0.3}]}>
+          <TouchableOpacity style={[styles.deposit, { opacity: 0.3 }]}>
             <Text
               style={{
                 textAlign: "center",
+      
+            
                 color: "white",
-                fontWeight: "bold",
+                fontSize: 20,
+                // fontWeight: "700",
+                lineHeight: 23,
+                marginTop: 2,
+                textAlign: "center",
+                fontFamily: "Gentium-Basic",
+                letterSpacing: 1.5,
               }}
             >
               NEXT
             </Text>
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity onPress={() => navigation.navigate('MonKapHasYourBack3')} style={styles.deposit}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("MonKapHasYourBack3")}
+            style={styles.deposit}
+          >
             <Text
               style={{
                 textAlign: "center",
-                color: "white",
-                fontWeight: "bold",
+      
+            
+              color: "white",
+              fontSize: 20,
+              // fontWeight: "700",
+              lineHeight: 23,
+              marginTop: 2,
+              textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              letterSpacing: 1.5,
               }}
             >
               NEXT
