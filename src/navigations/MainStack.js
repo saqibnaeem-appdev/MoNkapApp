@@ -28,6 +28,7 @@ import NoCardForm from '../screens/NoCardForm';
 import NoCardWarning from "../screens/NoCardWarning";
 import LinkBank from '../screens/LinkBank';
 import MyContact from '../screens/MyContact';
+import ViewMoreContacts from '../screens/ViewMoreContacts';
 
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
@@ -214,6 +215,13 @@ const MainStack = ({ navigation }) => {
           headerShown: false,
         }}
         component={MyContact}
+      />
+      <Stack.Screen
+        name="ViewMoreContacts"
+        options={{
+          headerShown: false,
+        }}
+        component={ViewMoreContacts}
       />
     </Stack.Navigator>
   );

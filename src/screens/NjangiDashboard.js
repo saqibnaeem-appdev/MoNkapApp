@@ -10,15 +10,32 @@ import Colors from "../../assets/theme/Colors";
 import Spacer from "../componentsMaryam/Spacer";
 import Sorry from "../componentsMaryam/Sorry";
 import HeaderCom from "../components/HeaderCom";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+import PerformanceCircle from "../components/Chart";
 // import PerformanceCircle from "../componentsMaryam/";
 const Dashboard = ({ navigation }) => {
   const [one, setOne] = useState(false);
   const [two, setTwo] = useState(false);
   const [three, setThree] = useState(false);
   const [four, setFour] = useState(false);
+
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <View style={styles.container}>
-      <HeaderCom onPress={() => navigation.goBack()} text={'Njangi'}/>
+      <HeaderCom
+        onPress={() => navigation.goBack()}
+        text={"MoNkap Digital Njangi"}
+        secText={'Veterans Njangi Details'}
+      />
       <View style={styles.innerContainer}>
         {/********* FIRST BOX **************/}
         <View
@@ -26,6 +43,7 @@ const Dashboard = ({ navigation }) => {
             flexDirection: "row",
             // backgroundColor: "pink",
             // alignItems:'center'
+            marginTop: 10,
           }}
         >
           <TouchableOpacity onPress={() => navigation.navigate("Create")}>
@@ -47,18 +65,17 @@ const Dashboard = ({ navigation }) => {
             <Text
               style={{
                 fontStyle: "italic",
-                fontSize: hp("1.6"),
+                fontSize: 12,
+                fontFamily: "Gentium-Basic",
                 fontWeight: "400",
-                lineHeight: 16,
+                lineHeight: 13.9,
                 color: Colors.lightblack,
               }}
             >
               Create New Njanigi
             </Text>
-            {one ?  (
-              <TouchableOpacity
-              onPress={()=>navigation.navigate('Manage')}
-              >
+            {one ? (
+              <TouchableOpacity onPress={() => navigation.navigate("Manage")}>
                 <Text
                   style={{
                     fontSize: 14,
@@ -71,10 +88,8 @@ const Dashboard = ({ navigation }) => {
                 </Text>
               </TouchableOpacity>
             ) : null}
-            {two ?  (
-              <TouchableOpacity
-              onPress={()=>navigation.navigate('Manage')}
-              >
+            {two ? (
+              <TouchableOpacity onPress={() => navigation.navigate("Manage")}>
                 <Text
                   style={{
                     fontSize: 14,
@@ -87,10 +102,8 @@ const Dashboard = ({ navigation }) => {
                 </Text>
               </TouchableOpacity>
             ) : null}
-            {three ?  (
-              <TouchableOpacity
-              onPress={()=>navigation.navigate('Manage')}
-              >
+            {three ? (
+              <TouchableOpacity onPress={() => navigation.navigate("Manage")}>
                 <Text
                   style={{
                     fontSize: 14,
@@ -103,10 +116,8 @@ const Dashboard = ({ navigation }) => {
                 </Text>
               </TouchableOpacity>
             ) : null}
-            {four ?  (
-              <TouchableOpacity
-              onPress={()=>navigation.navigate('Manage')}
-              >
+            {four ? (
+              <TouchableOpacity onPress={() => navigation.navigate("Manage")}>
                 <Text
                   style={{
                     fontSize: 14,
@@ -379,6 +390,9 @@ const Dashboard = ({ navigation }) => {
                 style={{
                   flexDirection: "row",
                   // alignItems:'center'
+                  // width:wp('20%'),
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Image
@@ -388,13 +402,19 @@ const Dashboard = ({ navigation }) => {
                     height: 20,
                   }}
                 />
+
                 <Text style={[styles.text, { color: Colors.lightblack }]}>
                   Collected[20]
                 </Text>
               </View>
+              <View style={{ width: wp("30%"), marginLeft: -40 }}>
+                <PerformanceCircle color percentage={70} />
+              </View>
               <View
                 style={{
                   flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Image
@@ -425,7 +445,9 @@ const Dashboard = ({ navigation }) => {
                   17-05-2022
                 </Text>
               </View>
-              <Text style={styles.underline}>View More</Text>
+              <TouchableOpacity  onPress={() => navigation.navigate('ViewMoreContacts')}>
+                <Text style={styles.underline}>View More</Text>
+              </TouchableOpacity>
               <View>
                 <Text
                   style={[
@@ -556,7 +578,8 @@ const Dashboard = ({ navigation }) => {
               <View
                 style={{
                   flexDirection: "row",
-                  // alignItems:'center'
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <Image
@@ -570,16 +593,14 @@ const Dashboard = ({ navigation }) => {
                   Collected[20]
                 </Text>
               </View>
-              {/* <PerformanceCircle
-        radius={100}
-        strokeWidth={20}
-        percentage={50}
-        color="red"
-        backgroundColor="pink"
-      /> */}
+              <View style={{ width: wp("30%"), marginLeft: -40 }}>
+                <PerformanceCircle color percentage={70} />
+              </View>
               <View
                 style={{
                   flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <Image
@@ -610,7 +631,9 @@ const Dashboard = ({ navigation }) => {
                   17-05-2022
                 </Text>
               </View>
-              <Text style={styles.underline}>View More</Text>
+              <TouchableOpacity  onPress={() => navigation.navigate('ViewMoreContacts')}>
+                <Text style={styles.underline}>View More</Text>
+              </TouchableOpacity>
               <View>
                 <Text
                   style={[
@@ -681,7 +704,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     alignSelf: "center",
-    fontSize: hp("1.5"),
+    fontSize: 14,
+    lineHeight: 16,
+    fontFamily: "Gentium-Basic",
     fontWeight: "700",
     fontStyle: "italic",
     // color:Colors.lightblack

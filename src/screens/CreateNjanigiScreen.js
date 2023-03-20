@@ -25,9 +25,24 @@ import StartingDate from "../componentsMaryam/StartingDate";
 import Sessions from "../componentsMaryam/Sessions";
 import HeaderCom from "../components/HeaderCom";
 import { useNavigation } from "@react-navigation/native";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 const Create = () => {
   const navigation = useNavigation()
+
+
+  
+  let [fontsLoaded] = useFonts({
+    // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
+    "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
+    "Gentium-Basic-Bold": require("../../assets/fonts/Gentium_Book_Basic_bold.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+
   return (
     <>
     

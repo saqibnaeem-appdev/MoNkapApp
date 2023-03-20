@@ -28,7 +28,7 @@ const Manage = () => {
 
   return (
     <>
-    <HeaderCom onPress={()=>navigation.goBack()} text={'Manage Njangi'} />
+    <HeaderCom onPress={()=>navigation.goBack()} text={'Manage Njangies'} />
     <View style={styles.container}>
       <View style={styles.innerContainer}>
         <Label label="Name" />
@@ -41,11 +41,19 @@ const Manage = () => {
         <View
           style={{
             flexDirection: "row",
+            width:wp('50%'),
+            justifyContent:'space-between',
+
           }}
         >
           <Label label="Played" />
+          <View style={{flexDirection: "row",
+            // width:wp('50%'),
+            justifyContent:'space-between',}}>
+
           <Text>Every 1 </Text>
           <AntDesign name="caretdown" color={Colors.lightblack} />
+          </View>
         </View>
         <Spacer />
         <Spacer />

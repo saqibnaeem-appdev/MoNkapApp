@@ -27,9 +27,8 @@ import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 
 const TargetSaving = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
-  
   let [fontsLoaded] = useFonts({
     // "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
     "Gentium-Basic": require("../../assets/fonts/Gentium_Book_Basic.ttf"),
@@ -63,11 +62,16 @@ const TargetSaving = () => {
           <Text style={styles.bluetext}>Small Projects</Text>
         </View>
         <View>
-          <Text style={[styles.bluetext,{marginLeft:-30}]}>We dey with you</Text>
+          <Text style={[styles.bluetext, { marginLeft: -30 }]}>
+            We dey with you
+          </Text>
           <Image source={require("../../assets/arrow-9.png")} />
         </View>
         <View>
-          <Image style={{marginLeft:10}} source={require("../../assets/icons8moneybox55-1.png")} />
+          <Image
+            style={{ marginLeft: 10 }}
+            source={require("../../assets/icons8moneybox55-1.png")}
+          />
           <Text style={styles.bluetext}>Big Projects</Text>
         </View>
       </View>
@@ -87,20 +91,28 @@ const TargetSaving = () => {
         </Text>
       </View>
 
-
-
       <View style={styles.TotalBalance}>
-            <TouchableOpacity onPress={() => navigation.navigate('MonKapHasYourBack')} style={styles.deposit}>
-              <Text style={{ textAlign: "center", color: "white" , fontSize: 20,
-                // fontWeight: "700",
-                lineHeight:23,
-                marginTop: 2,
-                textAlign: "center",
-                fontFamily:'Gentium-Basic',
-                letterSpacing:1.5,}}>Start a Target Savings</Text>
-            </TouchableOpacity>
-          </View>
-
+        <TouchableOpacity
+          onPress={() => navigation.navigate("MonKapHasYourBack")}
+          style={styles.deposit}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              color: "white",
+              fontSize: 20,
+              // fontWeight: "700",
+              lineHeight: 23,
+              marginTop: 2,
+              textAlign: "center",
+              fontFamily: "Gentium-Basic",
+              letterSpacing: 1.5,
+            }}
+          >
+            Start a Target Savings
+          </Text>
+        </TouchableOpacity>
+      </View>
     </>
   );
 };
@@ -123,12 +135,12 @@ const styles = StyleSheet.create({
   },
   topText: {
     fontSize: 16,
-                fontWeight: "400",
-                lineHeight:18,
-                marginTop: 2,
-                textAlign: "center",
-                fontFamily:'Gentium-Basic',
-                letterSpacing:1.5,
+    fontWeight: "400",
+    lineHeight: 18,
+    marginTop: 2,
+    textAlign: "center",
+    fontFamily: "Gentium-Basic",
+    letterSpacing: 1.5,
     textAlign: "center",
     marginTop: hp("2%"),
     marginBottom: hp("2%"),
@@ -136,11 +148,11 @@ const styles = StyleSheet.create({
   bluetext: {
     fontSize: 16,
     fontWeight: "400",
-    lineHeight:18,
+    lineHeight: 18,
     marginTop: 2,
     textAlign: "center",
-    fontFamily:'Gentium-Basic',
-    letterSpacing:1.5,
+    fontFamily: "Gentium-Basic",
+    letterSpacing: 1.5,
     color: "#0000EE",
   },
   TotalBalance: {

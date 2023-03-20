@@ -27,6 +27,7 @@ import { useNavigation } from "@react-navigation/native";
 import * as Progress from "react-native-progress";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
+import PerformanceCircle from "../components/Chart";
 
 // import Pie from "react-native-pie";
 // import { GLView } from "expo-gl";
@@ -214,15 +215,17 @@ const MyTargetSaving = () => {
             >
               Buy a shoe
             </Text>
-            <View></View>
+           
           </View>
-
+          <View style={{marginTop:20}}>
+              <PerformanceCircle percentage={70} />
+            </View>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
               paddingHorizontal: 5,
-              marginTop: hp("5%"),
+              marginTop: hp("3%"),
             }}
           >
             <Text
@@ -330,15 +333,16 @@ const MyTargetSaving = () => {
               >
                 Buy a shoe
               </Text>
-              <View></View>
             </View>
-
+            <View style={{marginTop:20}}>
+              <PerformanceCircle percentage={70} />
+            </View>
             <View
               style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
                 paddingHorizontal: 5,
-                marginTop: hp("5%"),
+                marginTop: hp("3%"),
               }}
             >
               <Text

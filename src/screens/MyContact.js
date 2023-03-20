@@ -51,7 +51,7 @@ const DATA = [
 const MyContact = () => {
   const [text, setText] = useState("");
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
     <>
@@ -67,7 +67,9 @@ const MyContact = () => {
             }}
             source={require("../../assets/ellipse-191.png")}
           />
-          <View style={{ alignItems: "flex-start" ,marginTop:10,marginLeft:10}}>
+          <View
+            style={{ alignItems: "flex-start", marginTop: 10, marginLeft: 10 }}
+          >
             <Text
               style={{ textAlign: "center", fontWeight: "700", fontSize: 17 }}
             >
@@ -108,12 +110,12 @@ const MyContact = () => {
 
   const renderSectionHeader = ({ section: { title } }) => (
     <View style={styles.header}>
-      <Text style={{fontWeight:'bold'}}>{title}</Text>
+      <Text style={{ fontWeight: "bold" }}>{title}</Text>
     </View>
   );
 
   return (
-    <ScrollView>
+    <>
       <HeaderCom onPress={() => navigation.goBack()} text={"Contacts"} />
 
       <View style={styles.container}>
@@ -129,13 +131,15 @@ const MyContact = () => {
         />
       </View>
 
-      <SectionList
-        sections={DATA}
-        keyExtractor={(item, index) => item + index}
-        renderItem={renderItem}
-        renderSectionHeader={renderSectionHeader}
-      />
-    </ScrollView>
+      <ScrollView>
+        <SectionList
+          sections={DATA}
+          keyExtractor={(item, index) => item + index}
+          renderItem={renderItem}
+          renderSectionHeader={renderSectionHeader}
+        />
+      </ScrollView>
+    </>
   );
 };
 
@@ -182,7 +186,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: wp("100%"),
-    height: hp("10%"),
+    height: hp("8%"),
     alignSelf: "center",
     backgroundColor: "white",
     paddingHorizontal: 10,
