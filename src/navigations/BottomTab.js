@@ -17,6 +17,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import MomoScreen from "../screens/MomoScreen";
 import LinkBankScreen from "../screens/LinkBank";
 import OMoneyStack from "../navigations/OMoneyStack";
+import MomoMoneyStack from "../navigations/MomoMoneyStack";
 import Colors from "../../assets/theme/Colors";
 const Tab = createBottomTabNavigator();
 
@@ -112,8 +113,19 @@ const BottomTabScreen = () => {
             tabBarStyle: {
               height: 42,
             },
-            tabBarLabelStyle: { fontWeight: "bold" },
 
+            tabBarStyle: {
+              height: 42,
+            },
+            tabBarLabelStyle: { fontWeight: "bold" },
+            // tabBarStyle: {
+            //   display: "none",
+            // },
+            tabBarActiveTintColor: Colors.white,
+            tabBarInactiveTintColor: Colors.textColor,
+            tabBarStyle: {
+              backgroundColor: Colors.MomoMoneySecondry,
+            },
             headerShown: false,
             tabBarLabel: "Momo",
             labelStyle: {
@@ -126,7 +138,7 @@ const BottomTabScreen = () => {
               <MaterialIcons name="attach-money" color={color} size={30} />
             ),
           }}
-          component={MomoScreen}
+          component={MomoMoneyStack}
         />
         <Tab.Screen
           name="ProfileScreen"

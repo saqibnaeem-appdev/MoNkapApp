@@ -7,40 +7,40 @@ import {
 } from "react-native-responsive-screen";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialIcons } from "@expo/vector-icons";
-import OMoneySplashScreen from "../screens/OMoney/OMoney_SplashScreen";
-import OMoneyRegistration from "../screens/OMoney/OMoney_registration";
-import OMoney_validation from "../screens/OMoney/OMoney_validation";
-import OMoney_validation_successful from "../screens/OMoney/OMoney_validation _successful";
-import OMoney_on_monkap_profile from "../screens/OMoney/OMoney_on_monkap_profile";
-import OMoneyHomeScreen from "../screens/OMoney/OMoneyHomeScreen";
-import OM_pay from "../screens/OMoney/OM_pay";
+import MomoMoneySplashScreen from "../screens/MomoMoney/MomoMoney_SplashScreen";
+import MomoMoneyRegistration from "../screens/MomoMoney/MomoMoney_registration";
+import MomoMoney_validation from "../screens/MomoMoney/MomoMoney_validation";
+import MomoMoney_validation_successful from "../screens/MomoMoney/MomoMoney_validation _successful";
+import MomoMoney_on_monkap_profile from "../screens/MomoMoney/MomoMoney_on_monkap_profile";
+import MomoMoneyHomeScreen from "../screens/MomoMoney/MomoMoneyHomeScreen";
+import Momo_pay from "../screens/MomoMoney/MoMo_pay";
 import Colors from "../../assets/theme/Colors";
-import OMoneyRequestMoneyFrequent from "../screens/OMoney/OMoneyRequestMoneyFrequent";
-import SendMoney from "./../screens/OMoney/SendMoney";
-import DepositMoney from "./../screens/OMoney/DepositeMoney";
-import CashOutMoneyScreen from "./../screens/OMoney/CashOutMoneyScreen";
-import OMoneyMockProfile from "./../screens/OMoney/OMoneyMockProfile";
-import SearchContact from "../screens/OMoney/SearchContact";
-import ScannerScreen from "./../screens/OMoney/ScannerScreen";
+import MomoMoneyRequestMoneyFrequent from "../screens/MomoMoney/MomoMoneyRequestMoneyFrequent";
+import SendMoney from "./../screens/MomoMoney/SendMoney";
+import DepositMoney from "./../screens/MomoMoney/DepositeMoney";
+import CashOutMoneyScreen from "./../screens/MomoMoney/CashOutMoneyScreen";
+import MomoMoneyMockProfile from "./../screens/MomoMoney/MomoMoneyMockProfile";
+import SearchContact from "../screens/MomoMoney/SearchContact";
+import ScannerScreen from "./../screens/MomoMoney/ScannerScreen";
 const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
   return (
-    <Stack.Navigator initialRouteName="OMoneySplashScreen">
+    <Stack.Navigator initialRouteName="MomoMoneySplashScreen">
       <Stack.Screen
-        name="OMoneySplashScreen"
+        name="MomoMoneySplashScreen"
         options={{
           headerShown: false,
         }}
-        component={OMoneySplashScreen}
+        component={MomoMoneySplashScreen}
       />
       <Stack.Screen
-        name="OMoneyRegistration"
+        name="MomoMoneyRegistration"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
-          title: "Let’s Register Your OMoney On MoNkap",
+          title: "Let’s Register Your MomoMoney On MoNkap",
           headerTitleStyle: {
             fontSize: 16,
           },
@@ -52,20 +52,20 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={25}
-                  onPress={() => navigation.navigate("OMoneySplashScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
           },
         }}
-        component={OMoneyRegistration}
+        component={MomoMoneyRegistration}
       />
       <Stack.Screen
-        name="OMoneyvalidation"
+        name="MomoMoneyvalidation"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Now Let’s Verify this Account",
           headerTitleStyle: {
@@ -79,20 +79,20 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={25}
-                  onPress={() => navigation.navigate("OMoneyRegistration")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
           },
         }}
-        component={OMoney_validation}
+        component={MomoMoney_validation}
       />
       <Stack.Screen
-        name="OMoneyvalidationsuccessful"
+        name="MomoMoneyvalidationsuccessful"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Account Verified",
           headerTitleStyle: {
@@ -107,20 +107,20 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={25}
-                  onPress={() => navigation.navigate("OMoneyvalidation")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
           },
         }}
-        component={OMoney_validation_successful}
+        component={MomoMoney_validation_successful}
       />
       <Stack.Screen
-        name="OMoneyonmonkapprofile"
+        name="MomoMoneyonmonkapprofile"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           headerLeft: () => {
             return (
@@ -142,14 +142,14 @@ const MainStack = ({ navigation }) => {
           },
           headerTitleAlign: "center",
         }}
-        component={OMoney_on_monkap_profile}
+        component={MomoMoney_on_monkap_profile}
       />
       <Stack.Screen
-        name="OMoneyHomeScreen"
+        name="MomoMoneyHomeScreen"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Welcome to Your OMoney @ MoNkap",
           headerTitleStyle: {
@@ -164,20 +164,20 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={25}
-                  onPress={() => navigation.navigate("OMoneyvalidation")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
           },
         }}
-        component={OMoneyHomeScreen}
+        component={MomoMoneyHomeScreen}
       />
       <Stack.Screen
-        name="OMPay"
+        name="MomoMoney"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "MoMo Pay",
           headerTitleStyle: {
@@ -192,20 +192,20 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
           },
         }}
-        component={OM_pay}
+        component={Momo_pay}
       />
       <Stack.Screen
-        name="OMoneyRequestMoneyFrequent"
+        name="MomoMoneyRequestMoneyFrequent"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "REQUEST MONEY",
           headerTitleStyle: {
@@ -221,20 +221,20 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
           },
         }}
-        component={OMoneyRequestMoneyFrequent}
+        component={MomoMoneyRequestMoneyFrequent}
       />
       <Stack.Screen
         name="SendMoney"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Send MONEY",
           headerTitleStyle: {
@@ -250,7 +250,7 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
@@ -263,7 +263,7 @@ const MainStack = ({ navigation }) => {
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Deposit Money",
           headerTitleStyle: {
@@ -279,7 +279,7 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
@@ -292,7 +292,7 @@ const MainStack = ({ navigation }) => {
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Cash Out Money",
           headerTitleStyle: {
@@ -308,7 +308,7 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
@@ -321,7 +321,7 @@ const MainStack = ({ navigation }) => {
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "OM RECHARGE",
           headerTitleStyle: {
@@ -337,20 +337,20 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
           },
         }}
-        component={OMoneyMockProfile}
+        component={MomoMoneyMockProfile}
       />
       <Stack.Screen
         name="SearchContact"
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Search Contact",
           headerTitleStyle: {
@@ -366,7 +366,7 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );
@@ -379,7 +379,7 @@ const MainStack = ({ navigation }) => {
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: Colors.OMoneySecondary,
+            backgroundColor: Colors.MomoMoneySecondry,
           },
           title: "Deposit Money",
           headerTitleStyle: {
@@ -395,7 +395,7 @@ const MainStack = ({ navigation }) => {
                   name={"keyboard-backspace"}
                   color={Colors.textColor}
                   size={28}
-                  onPress={() => navigation.navigate("OMoneyHomeScreen")}
+                  onPress={() => navigation.goBack()}
                 />
               </View>
             );

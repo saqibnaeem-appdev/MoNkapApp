@@ -1,3 +1,5 @@
+/** @format */
+
 import {
   StyleSheet,
   Text,
@@ -10,65 +12,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-// import PerformanceCircle from '../../components/Chart';
-
-import React, { useState } from "react";
-import { ProgressChart } from "react-native-chart-kit";
-import { Svg, Circle } from "react-native-svg";
-
-const PerformanceCircle = ({ percentage, stroke, text, color }) => {
-  const radius = stroke ? 27 : 20; // adjust as needed
-  const circumference = 2 * Math.PI * radius;
-  const progress = circumference - (percentage / 100) * circumference;
-
-  return (
-    <View
-      style={[
-        styles.containerPercentage,
-        { marginTop: stroke ? 40 : 10, marginLeft: -10 },
-      ]}
-    >
-      <Svg
-        width="100%"
-        height={radius * 4}
-        viewBox={`0 0 ${radius * 2} ${radius * 2}`}
-      >
-        <Circle
-          cx={radius}
-          cy={radius}
-          r={stroke ? radius - 6 : radius - 6} // adjust stroke width
-          stroke={color ? "#FFF2BE" : "#FFFFFF"}
-          strokeWidth={stroke ? "12" : "2"}
-          fill="none"
-        />
-        <Circle
-          cx={radius}
-          cy={radius}
-          r={stroke ? radius - 6 : radius - 6} // adjust stroke width
-          stroke={color ? "#FAA526" : "#0000EE"}
-          strokeWidth={stroke ? "12" : "2"}
-          strokeDasharray={circumference}
-          strokeDashoffset={progress}
-          strokeLinecap="round"
-          fill="none"
-        />
-      </Svg>
-      {text ? (
-        <Text
-          style={[
-            styles.percentage,
-            { marginTop: -25, position: "relative", color: "black" },
-          ]}
-        >
-          {Math.max(percentage, 1)}%
-        </Text>
-      ) : (
-        <Text style={[styles.percentage]}>{Math.max(percentage, 1)}%</Text>
-      )}
-    </View>
-  );
-};
-
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import React, { useState } from "react";
@@ -263,7 +206,6 @@ const OMoneyMockProfile = () => {
                       style={{
                         fontWeight: "400",
                         fontSize: 15,
-                        marginRight: 12,
                       }}
                     >
                       Data left:
@@ -278,85 +220,58 @@ const OMoneyMockProfile = () => {
                   </View>
                 </View>
               </View>
-              <View style={{ width: wp("35%"), height: hp("18%") }}>
-                <PerformanceCircle color text stroke percentage={60} />
+              <View>
+                <ProgressChart
+                  data={[0.8]}
+                  width={wp("30%")}
+                  height={150}
+                  chartConfig={{
+                    backgroundColor: "#fff",
+                    backgroundGradientFrom: "#fff",
+                    backgroundGradientTo: "#fff",
+                    decimalPlaces: 2,
+                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                    style: {
+                      borderRadius: 16,
+                    },
+                  }}
+                  style={{
+                    marginVertical: 8,
+                    borderRadius: 16,
+                  }}
+                />
               </View>
             </View>
           </View>
         ) : null}
       </View>
-
-      <View style={styles.MainBox}>
-        {selectedTab == "Data" ? (
-          <View>
+      <View style={styles.CardView}>
+        <View>
+          <Text style={styles.textStyle}>Other Bundles</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            width: wp("90%"),
+            justifyContent: "space-between",
+          }}
+        >
+          <Text style={styles.textStyle}>
+            Flexi:
             <Text
-              style={{
-                marginLeft: wp("5%"),
-                fontWeight: "400",
-                fontSize: 16,
-                lineHeight: 18,
-                color: "#000",
-              }}
+              style={[styles.textStyle, { color: "rgba(236, 46, 114, 1)" }]}
             >
-              Other Bundles
+              Inactive
             </Text>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
+          </Text>
+          <Text style={styles.textStyle}>
+            Giga Data:
+            <Text
+              style={[styles.textStyle, { color: "rgba(236, 46, 114, 1)" }]}
             >
-              <Text
-                style={{
-                  marginLeft: wp("5%"),
-                  fontWeight: "700",
-                  fontSize: 15,
-                  lineHeight: 18,
-                  fontFamily: "Gentium-Basic",
-                  color: "#000",
-                }}
-              >
-                MTN Yamo: Inactive
-              </Text>
-              <Text
-                style={{
-                  marginLeft: wp("5%"),
-                  fontWeight: "400",
-                  fontSize: 16,
-                  lineHeight: 18,
-                  color: "#000",
-                }}
-              >
-                MTN Yamo: Inactive
-              </Text>
-            </View>
-          </View>
-        ) : null}
-        <View style={styles.CardView}>
-          <View>
-            <Text style={styles.textStyle}>Other Bundles</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              width: wp("90%"),
-              justifyContent: "space-between",
-            }}
-          >
-            <Text style={styles.textStyle}>
-              Flexi:
-              <Text
-                style={[styles.textStyle, { color: "rgba(236, 46, 114, 1)" }]}
-              >
-                Inactive
-              </Text>
+              Inactive
             </Text>
-            <Text style={styles.textStyle}>
-              Giga Data:
-              <Text
-                style={[styles.textStyle, { color: "rgba(236, 46, 114, 1)" }]}
-              >
-                Inactive
-              </Text>
-            </Text>
-          </View>
+          </Text>
         </View>
       </View>
     </View>
@@ -419,21 +334,6 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     borderBottomWidth: 2,
     borderBottomColor: "rgba(234, 147, 17, 1)",
-  },
-  containerPercentage: {
-    alignItems: "center",
-    justifyContent: "center",
-    // backgroundColor: "yellow",
-    width: wp("40%"),
-
-    height: hp("7%"),
-    // position:'absolute',
-  },
-  percentage: {
-    position: "absolute",
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#0000EE",
   },
   CardView: {
     width: wp("90%"),
