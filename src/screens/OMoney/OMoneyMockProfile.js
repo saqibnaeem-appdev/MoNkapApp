@@ -5,6 +5,7 @@ import {
   View,
   Dimensions,
   ScrollView,
+  FlatList,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import {
@@ -18,6 +19,7 @@ import { useFonts } from "expo-font";
 
 import React, { useState } from "react";
 import Colors from "../../../assets/theme/Colors";
+import ButtonCom from "../../components/ButtonCom";
 
 const PerformanceCircle = ({ percentage, stroke, text, color }) => {
   const radius = stroke ? 27 : 20; // adjust as needed
@@ -72,6 +74,41 @@ const PerformanceCircle = ({ percentage, stroke, text, color }) => {
   );
 };
 
+const DATA = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "First Item",
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Second Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-1455e29d72",
+    title: "forth Item",
+  },
+];
+
+const Item = ({ item, onPress, backgroundColor, textColor }) => (
+  <>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.item, { backgroundColor }]}
+    >
+      <View>
+        <Text style={{ marginLeft: 5, color: textColor }}>Price</Text>
+        <Text style={[styles.title, { color: textColor }]}>100 XAF </Text>
+        <Text style={{ marginLeft: 5, color: textColor }}>Price</Text>
+        <Text style={[styles.title, { color: textColor }]}>100 XAF </Text>
+      </View>
+    </TouchableOpacity>
+  </>
+);
+
 const OMoneyMockProfile = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -83,8 +120,28 @@ const OMoneyMockProfile = () => {
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+  const [isChecked5, setIsChecked5] = useState(false);
+  const [isChecked6, setIsChecked6] = useState(false);
 
   const [selectedTab, SetSelectedTab] = useState("Voice");
+
+  const [selectedId, setSelectedId] = useState();
+
+  const renderItem = ({ item }) => {
+    const backgroundColor = item.id === selectedId ? "#EA9311" : "#0000";
+    const color = item.id === selectedId ? "white" : "black";
+
+    return (
+      <Item
+        item={item}
+        onPress={() => setSelectedId(item.id)}
+        backgroundColor={backgroundColor}
+        textColor={color}
+      />
+    );
+  };
+
   let [fontsLoaded] = useFonts({
     "Gentium-Basic-italic": require("../../../assets/fonts/Gentium_Book_Basic_bold_italic.ttf"),
     "Gentium-Basic": require("../../../assets/fonts/Gentium_Book_Basic.ttf"),
@@ -95,7 +152,7 @@ const OMoneyMockProfile = () => {
   }
 
   return (
-    <ScrollView style={{flex:1}}>
+    <ScrollView style={{ flex: 1 }}>
       <View style={styles.container}>
         {/* Main Box */}
         <View style={styles.MainBox}>
@@ -289,10 +346,166 @@ const OMoneyMockProfile = () => {
               </View>
             </View>
           ) : null}
+          {selectedTab == "SMS" ? (
+            <View style={{ marginTop: hp("1%") }}>
+              <View
+                style={{
+                  marginHorizontal: wp("5%"),
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <View>
+                  <Text
+                    style={{
+                      fontWeight: "700",
+                      fontSize: 16,
+                    }}
+                  >
+                   Unlimited SMS:
+                    <Text style={{ color: "rgba(236, 46, 114, 1)" }}>
+                      Active
+                    </Text>
+                  </Text>
+                  <Text
+                    style={{
+                      fontWeight: "400",
+                      fontSize: 15,
+                    }}
+                  >
+                   Bundle:
+                    <Text style={{ fontWeight: "700" }}>30days - 500 XAF</Text>
+                  </Text>
+                  {/* <Text
+                    style={{
+                      fontWeight: "400",
+                      fontSize: 15,
+                    }}
+                  >
+                    Duration:
+                    <Text
+                      style={{
+                        fontWeight: "700",
+                      }}
+                    >
+                      1 day
+                    </Text>
+                  </Text> */}
+                  <View
+                    style={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      flexDirection: "row",
+                    }}
+                  >
+                    <View
+                      style={{
+                        backgroundColor: "rgba(255, 242, 190, 1)",
+                        width: wp("10%"),
+                        height: hp("2%"),
+                        borderRadius: 50,
+                      }}
+                    ></View>
+                    <View>
+                      <Text
+                        style={{
+                          fontWeight: "400",
+                          fontSize: 15,
+                        }}
+                      >
+                        SMS used: 
+                        <Text
+                          style={{
+                            fontWeight: "700",
+                          }}
+                        >
+                         15 days
+                        </Text>
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      flexDirection: "row",
+                    }}
+                  >
+                    <View
+                      style={{
+                        backgroundColor: "rgba(234, 147, 17, 1)",
+                        width: wp("10%"),
+                        height: hp("2%"),
+                        borderRadius: 50,
+                      }}
+                    ></View>
+                    <View>
+                      <Text
+                        style={{
+                          fontWeight: "400",
+                          fontSize: 15,
+                          marginRight: 12,
+                        }}
+                      >
+                        SMS left: 
+                        <Text
+                          style={{
+                            fontWeight: "700",
+                          }}
+                        >
+                          15 days
+                        </Text>
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={{ width: wp("35%"), height: hp("18%") }}>
+                  <PerformanceCircle color text stroke percentage={40} />
+                </View>
+              </View>
+            </View>
+          ) : null}
         </View>
 
         <View>
           {selectedTab == "Data" ? (
+            <View style={styles.CardView}>
+              <View>
+                <Text style={styles.textStyle}>Other Bundles</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  width: wp("90%"),
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text style={styles.textStyle}>
+                  Flexi:
+                  <Text
+                    style={[
+                      styles.textStyle,
+                      { color: "rgba(236, 46, 114, 1)" },
+                    ]}
+                  >
+                    Inactive
+                  </Text>
+                </Text>
+                <Text style={styles.textStyle}>
+                  Giga Data:
+                  <Text
+                    style={[
+                      styles.textStyle,
+                      { color: "rgba(236, 46, 114, 1)" },
+                    ]}
+                  >
+                    Inactive
+                  </Text>
+                </Text>
+              </View>
+            </View>
+          ) : null}
+          {selectedTab == "SMS" ? (
             <View style={styles.CardView}>
               <View>
                 <Text style={styles.textStyle}>Other Bundles</Text>
@@ -445,8 +658,8 @@ const OMoneyMockProfile = () => {
                   borderColor={"black"}
                   backgroundColor={"#EA9311"}
                   iconColor={"#EA9311"}
-                  checked={isChecked1}
-                  onValueChange={(checked) => setIsChecked1(checked)}
+                  checked={isChecked4}
+                  onValueChange={(checked) => setIsChecked4(checked)}
                 />
                 <Text style={{ marginLeft: 10 }}>Daily</Text>
               </View>
@@ -462,8 +675,8 @@ const OMoneyMockProfile = () => {
                   borderColor={"black"}
                   backgroundColor={"#EA9311"}
                   iconColor={"#EA9311"}
-                  checked={isChecked2}
-                  onValueChange={(checked) => setIsChecked2(checked)}
+                  checked={isChecked5}
+                  onValueChange={(checked) => setIsChecked5(checked)}
                 />
                 <Text style={{ marginLeft: 10 }}>Weekly</Text>
               </View>
@@ -479,12 +692,68 @@ const OMoneyMockProfile = () => {
                   borderColor={"black"}
                   backgroundColor={"#EA9311"}
                   iconColor={"#EA9311"}
-                  checked={isChecked3}
-                  onValueChange={(checked) => setIsChecked3(checked)}
+                  checked={isChecked6}
+                  onValueChange={(checked) => setIsChecked6(checked)}
                 />
                 <Text style={{ marginLeft: 10 }}>Monthly</Text>
               </View>
             </View>
+            {isChecked4 || isChecked5 || isChecked6 ? (
+              <View
+                style={{
+                  width: wp("90%"),
+                  alignSelf: "center",
+                  marginVertical: 20,
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "400",
+                    lineHeight: 18,
+                    fontStyle: "italic",
+                    fontFamily: "Gentium-Basic",
+                    marginVertical: 10,
+                  }}
+                >
+                  Choose Your Bundle
+                </Text>
+
+                <FlatList
+                  horizontal
+                  data={DATA}
+                  renderItem={renderItem}
+                  keyExtractor={(item) => item.id}
+                  extraData={selectedId}
+                />
+              </View>
+            ) : (
+              <View></View>
+            )}
+
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#EA9311",
+                width: wp("70%"),
+                alignSelf: "center",
+                paddingHorizontal: 20,
+                paddingVertical: 10,
+                borderRadius: 5,
+                marginVertical: 20,
+              }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  fontSize: 20,
+                  lineHeight: 24,
+                  fontWeight: "400",
+                  fontFamily: "Gentium-Basic",
+                }}
+              >
+                RECHARGE
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -495,6 +764,22 @@ const OMoneyMockProfile = () => {
 export default OMoneyMockProfile;
 
 const styles = StyleSheet.create({
+  item: {
+    width: wp("30%"),
+    // padding: 5,
+    // marginVertical: 8,
+    marginHorizontal: 5,
+    borderWidth: 0.5,
+    borderColor: "#EA9311",
+    borderRadius: 5,
+  },
+  title: {
+    marginLeft: 5,
+    fontSize: 16,
+    lineHeight: 18,
+    fontWeight: "700",
+    fontFamily: "Gentium-Basic",
+  },
   container: {
     // flex: 1,
     // backgroundColor: "#E9EBEC",
